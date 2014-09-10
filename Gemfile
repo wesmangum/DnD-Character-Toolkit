@@ -3,6 +3,7 @@ ruby "2.1.2"
 source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.0.0'
+gem 'devise'
 gem 'foundation-rails'
 gem 'haml'
 gem 'jbuilder', '~> 2.0'
@@ -22,4 +23,6 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'fabrication'
+  gem 'launchy'
 end
