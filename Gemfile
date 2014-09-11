@@ -23,7 +23,7 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
-  gem "letter_opener"
+  gem 'letter_opener'
   gem 'rspec-rails'
 end
 
