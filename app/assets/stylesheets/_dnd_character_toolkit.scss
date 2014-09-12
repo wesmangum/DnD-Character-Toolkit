@@ -1,8 +1,18 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 @import url(http://fonts.googleapis.com/css?family=Merriweather);
+@import "foundation/components/buttons";
 
 nav.top-bar{
   li.name > h1 > a > img {
   height: 30px;
+  }
+}
+
+.side-menu {
+  a {
+    @include button();
+    &.disabled {
+      @include button($disabled:true);
+    }
   }
 }

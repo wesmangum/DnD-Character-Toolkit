@@ -10,7 +10,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'confirmation@dnd-character-toolkit.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -233,8 +233,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, "327040444135769", "94f44c0766870c39c4f46253715aa71a"
-  config.omniauth :twitter, "Z7s9L5snHbE5eLV2n8Cqtgpa3", "hr5cBwSwpwlr19L86vHX7fIhTghc3IpPO11hjsskcb8dnrx7fW", :client_options => {:authorize_path => '/oauth/authenticate'}
+  API_KEYS = YAML::load_file("#{Rails.root}/config/api_keys.yml")[Rails.env]
+  config.omniauth :facebook, API_KEYS['facebook']['api_key'], API_KEYS['facebook']['api_secret']
+  config.omniauth :twitter, API_KEYS['twitter']['api_key'], API_KEYS['twitter']['api_secret'], :client_options => {:authorize_path => '/oauth/authenticate'}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

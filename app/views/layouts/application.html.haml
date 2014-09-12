@@ -19,14 +19,12 @@
               %a{:href => "#"}
                 %span Menu
           %section.top-bar-section
-            %ul.left
-              - if user_signed_in?
-                %li
-                  =link_to "Characters"
             %ul.right
               -if user_signed_in?
                 %li
                   =link_to "Welcome back, #{current_user.name}!"
+                %li
+                  =link_to "Dashboard", user_path(current_user)
                 %li
                   =link_to "Sign Out", destroy_user_session_path, method: :delete
               -else
