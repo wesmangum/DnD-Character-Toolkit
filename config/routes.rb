@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
   resources :users, only: :show
   resources :characters, only: :new do
-    resources :races
+    resources :races, only: [:index, :create]
+    resources :classses
   end
 
   # Example of regular route:

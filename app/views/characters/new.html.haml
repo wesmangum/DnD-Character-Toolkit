@@ -1,7 +1,7 @@
 .row
   %p To create a character click on 'Race'.
   .side-menu
-    =link_to "Race", new_character_race_path(:character_id => @character.id)
+    =link_to "Race", character_races_path(@character)
     =link_to "Class"
     =link_to "Description", new_user_session_path, {:class => ("disabled" if @character.race.nil?)}
     =link_to "Abilities", new_user_session_path, {:class => ("disabled" if @character.race.nil?)}

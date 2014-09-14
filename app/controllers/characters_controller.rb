@@ -1,7 +1,6 @@
 class CharactersController < ApplicationController
   def new
-    @character = Character.new()
-    @character.save
+    @character = current_user.characters.create!
     @character
   end
 end

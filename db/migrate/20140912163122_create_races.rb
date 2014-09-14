@@ -3,6 +3,7 @@ class CreateRaces < ActiveRecord::Migration
     create_table :races do |t|
 
       t.timestamps
+      t.string :name
     end
   end
 end

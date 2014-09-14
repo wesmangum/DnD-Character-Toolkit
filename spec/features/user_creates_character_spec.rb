@@ -22,7 +22,6 @@
 feature "User Creates Character" do
 
   scenario "Happy Path" do
-    pending "Race Model Implementation"
     user = Fabricate(:user)
     login_as(user)
     expect(page).to_not have_content "Sign In"

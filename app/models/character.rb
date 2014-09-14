@@ -1,4 +1,4 @@
 class Character < ActiveRecord::Base
    belongs_to :user
-   has_one :race
+   belongs_to :race
 end

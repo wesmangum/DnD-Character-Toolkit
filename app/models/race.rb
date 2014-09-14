@@ -1,3 +1,4 @@
 class Race < ActiveRecord::Base
-  belongs_to :character
+  has_many :characters
+  has_many :sub_races
 end

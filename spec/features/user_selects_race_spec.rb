@@ -6,29 +6,25 @@
 
 # ###Acceptance Criteria
 # * There should be a "Race" tab on the New Character screen
-# * When a User selects a base Race, a second dropdown should appear with all of that Race's subRaces
-# * When the Race selection is done, a table with the Character's Base stats should appear on the page
 # * The User's Race selection should carry over to the other Character Creation sections
 
 # ###Usage
 # * A Page appears, where the User can choose their Race from a dropdown
-#   * If the race has SubRaces, a second dropdown will appear with those choices
-#   * When a (sub)race is selected, a table with the race's base stats will show
 #   * All of the selected Race's traits (speed, languages, etc.) will be listed
-# * User will Confirm their Race selection by clicking on
+# * User will Confirm their Race selection by clicking "Submit Race"
 
 feature "User Creates Character & Selects Race" do
   scenario "Happy Path" do
-    pending "Race Model Implementation"
     user = Fabricate(:user)
     login_as(user)
     click_on "Dashboard"
     click_on "Create a Character"
     click_on "Race"
-    expect(page).to have_content("Select a base Race. Then, choose your Sub Race.")
-    page.select('Dwarf', :from => 'races')
-    page.select('Hill Dwarf', :from => 'subraces')
-    expect(page).to have_content("Strength")
-    expect(Character.last.race.subrace).to eq "Hill Dwarf"
+    expect(page).to have_content("You're on the first step to creating your character! The first step is to decide on a race. Select one from the dropdown below.")
+    page.select('Dwarf', :from => 'character_race')
+    click_on "Submit Race"
+    current_path.should == character_classses_path(Character.first)
+    expect(page).to have_content("Your Character's race was saved!")
+    expect(Character.first.race).to eq(Race.find_by name: "Dwarf")
   end
 end
