@@ -19,11 +19,10 @@ feature "User Creates Character & Selects Race" do
     login_as(user)
     click_on "Dashboard"
     click_on "Create a Character"
-    click_on "Race"
     expect(page).to have_content("You're on the first step to creating your character! The first step is to decide on a race. Select one from the dropdown below.")
     page.select('Dwarf', :from => 'character_race')
     click_on "Submit Race"
-    current_path.should == character_classses_path(Character.first)
+    current_path.should == character_classes_path(Character.first)
     expect(page).to have_content("Your Character's race was saved!")
     expect(Character.first.race).to eq(Race.find_by name: "Dwarf")
   end

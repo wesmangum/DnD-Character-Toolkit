@@ -21,7 +21,6 @@ feature "User Selects Class" do
     login_as(user)
     click_on "Dashboard"
     click_on "Create a Character"
-    click_on "Race"
     page.select('Dwarf', :from => 'character_race')
     click_on "Submit Race"
 

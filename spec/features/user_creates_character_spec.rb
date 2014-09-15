@@ -27,12 +27,6 @@ feature "User Creates Character" do
     expect(page).to_not have_content "Sign In"
     click_on "Dashboard"
     click_on "Create a Character"
-    expect(page).to have_content("Race")
-    expect(page).to have_content("Class")
-    expect(page).to have_content("Description")
-    expect(page).to have_content("Abilities")
-    expect(page).to have_content("Equipment")
-    expect(page).to have_content("To create a character click on 'Race'.")
-    expect(page).to have_css('a.disabled', :count => 3)
+    expect(page).to have_content("You're on the first step to creating your character! The first step is to decide on a race. Select one from the dropdown below.")
   end
 end
