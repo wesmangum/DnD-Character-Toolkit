@@ -1,0 +1,12 @@
+.row
+  - @abilities.each do |ability|
+    .score.small-2.columns= ability
+.row
+  =simple_form_for @character, url: character_abilities_path(@character), method: 'post' do |f|
+    =f.input :str, label: "Strength", collection: @abilities
+    =f.input :dex, label: "Dexterity", collection: @abilities
+    =f.input :const, label: "Constitution", collection: @abilities
+    =f.input :int, label: "Intelligence", collection: @abilities
+    =f.input :wis, label: "Wisdom", collection: @abilities
+    =f.input :cha, label: "Charisma", collection: @abilities
+    =f.button :submit, "Submit Abilities"

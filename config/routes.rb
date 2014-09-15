@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :characters, only: :new do
     resources :races, only: [:index, :create]
     resources :classes, only: [:index, :create]
-    resources :abilities, only: :index
+    resources :abilities, only: [:index, :create]
+    get '/generate' => 'abilities#generate', as: 'generate_ability_scores'
   end
 
   # Example of regular route:
