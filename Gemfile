@@ -33,5 +33,6 @@ group :test do
   gem 'database_cleaner'
   gem 'fabrication'
   gem 'launchy'
+  gem 'poltergeist'
   gem 'pry-rails'
 end

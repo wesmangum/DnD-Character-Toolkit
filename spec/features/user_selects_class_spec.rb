@@ -17,6 +17,7 @@
 
 feature "User Selects Class" do
   scenario "Happy Path" do
+    seed_database()
     user = Fabricate(:user)
     login_as(user)
     click_on "Dashboard"
