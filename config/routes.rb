@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :characters, only: :new do
     resources :races, only: [:index, :create]
-    resources :classses
+    resources :classes, only: [:index, :create]
+    resources :abilities, only: :index
   end
 
   # Example of regular route:

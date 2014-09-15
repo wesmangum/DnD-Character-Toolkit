@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 20140914161037) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "race_id"
-    t.integer  "classs_id"
+    t.integer  "dd_class_id"
   end
 
   add_index "characters", ["race_id"], name: "index_characters_on_race_id", using: :btree
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
-  create_table "classses", force: true do |t|
+  create_table "classes", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

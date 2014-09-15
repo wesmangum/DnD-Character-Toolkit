@@ -11,7 +11,7 @@ class RacesController < ApplicationController
     @character.race = @race
     if @character.save!
       flash.notice = "Your Character's race was saved!"
-      redirect_to character_classses_path(@character)
+      redirect_to character_classes_path(@character)
     else
       flash.notice = "Your Character could not be saved."
       render character_races_path(@character)

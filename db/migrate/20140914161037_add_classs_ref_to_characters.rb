@@ -1,5 +1,5 @@
 class AddClasssRefToCharacters < ActiveRecord::Migration
   def change
-    add_column :characters, :classs_id, :integer
+    add_column :characters, :dd_class_id, :integer
   end
 end

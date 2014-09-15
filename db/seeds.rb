@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
   Race.create([{name: 'Dwarf'}, {name: 'Elf'}])
+  DdClass.create([{name: 'Fighter'}, {name: 'Wizard'}])
