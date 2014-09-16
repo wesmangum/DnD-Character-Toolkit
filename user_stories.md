@@ -106,7 +106,7 @@ I want to select a Race as the basis for my Character
 
 As a User
 In order to define my Character and their skillset
-I wnat to select a Class for my Character
+I want to select a Class for my Character
 
 ###Acceptance Criteria
 * A Page appears, where the User can choose a Class from a dropdown
@@ -120,53 +120,41 @@ I wnat to select a Class for my Character
 * User will confirm their Class selection by clicking on another section to continue ther Character Creation
 
 
-##User Determines the Abilities for a New Character
-
-As a User
-In order to determine my proficiences in the field
-I wnat to distribute points to my different Abilities
-
-###Acceptance Criteria
-* A Page appears, where the User can choose their method of distributing points
-* A User should be able to randomly generate numbers, or select from a predefined list of numbers
-* When Ability points are distributed, the Base Stats table will update to reflect these changes
-* This tab should be blocked until Race and Class are selected
-
-###Usage
-* Once Class & Race are selected, the User will click "Abilities" to select their Character's Ability Scores
-  * Six random Ability Scores are generated, or the options of "15, 14, 13, 12, 10, 8" are availiable
-  * User then drags the numbers to the Ability that they want the score on
-  * The Abilities are then modified to reflect Race choice
-  * The Character's Final Hit Points will be calculated once Constitution is calculated
-* User will confirm their Abilities selection by clicking on another section to continue their Character Creation
-
-
 ##User Assigns Abilities for New Character
 
 As a User
-In order to make my character a living being in this fantasy universe
-I want to add description to my character
+In order to stermine my character's strengths and modifiers
+I want to assign ability points to abilities for my character
 
 ###Acceptance Criteria
-* A Page appears, where the User can select the various details of their Character
-* The User should have various dropdowns, all affected by their previous choices
-* This tab should be blurred out until Race & Class are selected
-* Height and Weight should be effected by the race of the Character
-* Ideals should not be selectable until Background is selected
+* A button appears, where the User can generate random Ability Scores
+* When the User generates scores, a form appears with multiple dropdowns
+* The User's Ability score assignment shoul dbe saved and carried over in the Character Creation process
 
 ###Usage
-* Once Class & Race are selected, the User clicks "Description" to fill out the Character's Description:
-  * Name (Text)
-  * Sex (Male/Female)
-  * Height (Slider determined from Race)
-  * Weight (Slider determined from Race)
-  * Alignment (Dropdown)
-  * Background (Dropdown)
-  * Personality (Text)
-  * Ideals (Dropdown determined from Background)
-  * Bonds (Text)
-  * Flaws (Text)
-  * Physical Appearance (Text)
+* Once they have confirmed their class, they click "Abilities" to assign Scores
+  * User clicks "Generate" to see what scores they can work with
+  * Form appears with six dropdowns, one for each Ability
+* User will select scores from the respective dropdowns for each Ability
+* They User will click "Submit Abilities" to continue with the Character Creation process
+
+
+##User Assigns Skill Points for a New Character
+
+As a User
+In order to determine my what my character is good at
+I want to assign skill points to different skills
+
+###Acceptance Criteria
+* A Page appears, where the User sees their available Skill points
+* A User should be able to assign points to specific skills
+* A cross-class skill should deprecate the skill points by 2 for every 1 level
+* This tab should be blocked until Race and Class are selected
+
+###Usage
+* Once Ability scores have been confirmed, User is prompted with score modifiers and all skills
+  * User will click arrows to add skill points to a specific skill
+* When they are satisfied with their skills, they will click "Submit Skills" to continue the Character Creation Process
 
 
 ##User Fleshes out Description of New Character
