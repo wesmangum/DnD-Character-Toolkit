@@ -19,18 +19,13 @@ class AbilitiesController < ApplicationController
 
   def create
     @character = Character.find_by id: params[:character_id]
-    @abilities = session[:abilities]
-
-    if @character.abilities_match?(ability_params, @abilities)
-      if @character.update_attributes(ability_params)
-        flash.notice = "Your Character's abilities were saved!"
-        redirect_to character_abilities_path(@character)
-      else
-        flash.notice = "Your Character could not be saved."
-        redirect_to character_abilities_path(@character)
-      end
+    @character.selected = ability_params
+    @character.generated = session[:abilities]
+    if @character.update_attributes(ability_params)
+      flash.notice = "Your Character's abilities were saved!"
+      redirect_to character_skills_path(@character)
     else
-      flash.notice = "You may only assign each value once!"
+      flash.alert = @character.errors[:base]
       redirect_to character_abilities_path(@character)
     end
   end

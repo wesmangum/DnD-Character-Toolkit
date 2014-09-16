@@ -6,6 +6,34 @@
     %title= content_for?(:title) ? yield(:title) : "foundation-rails"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
+    :javascript
+      WebFontConfig = {
+        google: { families: [ 'Open+Sans::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+
+    :javascript
+      WebFontConfig = {
+          google: { families: [ 'Merriweather::latin' ] }
+        };
+        (function() {
+          var wf = document.createElement('script');
+          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+          wf.type = 'text/javascript';
+          wf.async = 'true';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(wf, s);
+        })();
+
     = csrf_meta_tags
     %body
       .contain-to-grid

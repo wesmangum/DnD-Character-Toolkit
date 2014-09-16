@@ -10,7 +10,6 @@ feature "User assigns Ability Scores to Character", :js => true do
     page.select('Fighter', :from => 'character_class')
     click_on "Submit Class"
 
-    current_path.should == character_abilities_path(Character.first)
     expect(page).to have_content("Now, it's time to generate and assign Ability Scores. Click the 'Generate' button below to roll 6 numbers.")
     click_on "Generate"
     expect(page).to have_css(".score", count: 6)
@@ -31,6 +30,7 @@ feature "User assigns Ability Scores to Character", :js => true do
     click_on "Submit Abilities"
 
     character = Character.first
+    current_path.should == character_skills_path(character)
     expect(character.str).to eq(str.to_i)
     expect(character.dex).to eq(dex.to_i)
     expect(character.const).to eq(const.to_i)
@@ -67,7 +67,37 @@ feature "User assigns Ability Scores to Character", :js => true do
 
     character = Character.first
     current_path.should == character_abilities_path(character)
-    expect(page).to have_content("You may only assign each value once!")
+
+    expect(character.str).to be_nil
+    expect(character.dex).to be_nil
+    expect(character.const).to be_nil
+    expect(character.int).to be_nil
+    expect(character.wis).to be_nil
+    expect(character.cha).to be_nil
+  end
+
+  scenario "Sad Path, User doesn't select all  Ability scores" do
+    seed_database()
+    user = Fabricate(:user)
+    login_as(user)
+    click_on "Dashboard"
+    click_on "Create a Character"
+    page.select('Dwarf', :from => 'character_race')
+    click_on "Submit Race"
+    page.select('Fighter', :from => 'character_class')
+    click_on "Submit Class"
+
+    current_path.should == character_abilities_path(Character.first)
+    expect(page).to have_content("Now, it's time to generate and assign Ability Scores. Click the 'Generate' button below to roll 6 numbers.")
+    click_on "Generate"
+    expect(page).to have_css(".score", count: 6)
+
+    str = field_labeled("Strength").all("option")[1].value
+    select(str, from: "Strength")
+    click_on "Submit Abilities"
+
+    character = Character.first
+    current_path.should == character_abilities_path(character)
 
     expect(character.str).to be_nil
     expect(character.dex).to be_nil
