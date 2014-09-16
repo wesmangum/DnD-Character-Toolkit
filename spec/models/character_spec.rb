@@ -22,28 +22,26 @@ RSpec.describe "Character Abilities" do
   end
 
   it "should compare the abilities to the character and fail because of greedy user" do
-    pending "update attributes not working"
     user = Fabricate(:user)
     user.confirm!
     dd_class = Fabricate(:dd_class)
     race = Fabricate(:race)
     character = Character.new(user: user, dd_class: dd_class, race: race)
     selected_scores = {
-      str: "16",
-      dex: "16",
-      const: "16",
-      int: "16",
-      wis: "16",
-      cha: "16"
+      "str" => "16",
+      "dex" => "16",
+      "const" => "16",
+      "int" => "16",
+      "wis" => "16",
+      "cha" => "16"
     }
     generated_scores = [11, 12, 13, 14, 15, 16]
     character.selected = selected_scores
     character.generated = generated_scores
-    (character.update_attributes(selected_scores)).should_not eq true
+    (character.send :abilities_match?, selected_scores, generated_scores).should_not eq true
   end
 
   it "should compare the abilities to the character and fail because of unfinished selection" do
-    pending "update attributes not working"
     user = Fabricate(:user)
     user.confirm!
     dd_class = Fabricate(:dd_class)
@@ -60,6 +58,6 @@ RSpec.describe "Character Abilities" do
     generated_scores = [11, 12, 13, 14, 15, 16]
     character.selected = selected_scores
     character.generated = generated_scores
-    (character.update_attributes(selected_scores)).should_not eq true
+    (character.send :abilities_selected?, selected_scores).should_not eq true
   end
 end
