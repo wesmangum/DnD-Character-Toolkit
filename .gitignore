@@ -16,4 +16,5 @@
 /tmp
 
 /config/database.yml
-/config/api_keys.yml
+# Ignore application configuration
+/config/application.yml

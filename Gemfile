@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
+gem 'figaro'
 gem 'foundation-rails'
 gem 'haml'
 gem 'jbuilder', '~> 2.0'

@@ -120,7 +120,28 @@ I wnat to select a Class for my Character
 * User will confirm their Class selection by clicking on another section to continue ther Character Creation
 
 
-##User Fleshes out Description of New Character
+##User Determines the Abilities for a New Character
+
+As a User
+In order to determine my proficiences in the field
+I wnat to distribute points to my different Abilities
+
+###Acceptance Criteria
+* A Page appears, where the User can choose their method of distributing points
+* A User should be able to randomly generate numbers, or select from a predefined list of numbers
+* When Ability points are distributed, the Base Stats table will update to reflect these changes
+* This tab should be blocked until Race and Class are selected
+
+###Usage
+* Once Class & Race are selected, the User will click "Abilities" to select their Character's Ability Scores
+  * Six random Ability Scores are generated, or the options of "15, 14, 13, 12, 10, 8" are availiable
+  * User then drags the numbers to the Ability that they want the score on
+  * The Abilities are then modified to reflect Race choice
+  * The Character's Final Hit Points will be calculated once Constitution is calculated
+* User will confirm their Abilities selection by clicking on another section to continue their Character Creation
+
+
+##User Assigns Abilities for New Character
 
 As a User
 In order to make my character a living being in this fantasy universe
@@ -148,25 +169,32 @@ I want to add description to my character
   * Physical Appearance (Text)
 
 
-##User Determines the Abilities for a New Character
+##User Fleshes out Description of New Character
 
 As a User
-In order to determine my proficiences in the field
-I wnat to distribute points to my different Abilities
+In order to make my character a living being in this fantasy universe
+I want to add description to my character
 
 ###Acceptance Criteria
-* A Page appears, where the User can choose their method of distributing points
-* A User should be able to randomly generate numbers, or select from a predefined list of numbers
-* When Ability points are distributed, the Base Stats table will update to reflect these changes
-* This tab should be blocked until Race and Class are selected
+* A Page appears, where the User can select the various details of their Character
+* The User should have various dropdowns, all affected by their previous choices
+* This tab should be blurred out until Race & Class are selected
+* Height and Weight should be effected by the race of the Character
+* Ideals should not be selectable until Background is selected
 
 ###Usage
-* Once Class & Race are selected, the User will click "Abilities" to select their Character's Ability Scores
-  * Six random Ability Scores are generated, or the options of "15, 14, 13, 12, 10, 8" are availiable
-  * User then drags the numbers to the Ability that they want the score on
-  * The Abilities are then modified to reflect Race choice
-  * The Character's Final Hit Points will be calculated once Constitution is calculated
-* User will confirm their Abilities selection by clicking on another section to continue their Character Creation
+* Once Class & Race are selected, the User clicks "Description" to fill out the Character's Description:
+  * Name (Text)
+  * Sex (Male/Female)
+  * Height (Slider determined from Race)
+  * Weight (Slider determined from Race)
+  * Alignment (Dropdown)
+  * Background (Dropdown)
+  * Personality (Text)
+  * Ideals (Dropdown determined from Background)
+  * Bonds (Text)
+  * Flaws (Text)
+  * Physical Appearance (Text)
 
 
 ##User Selects Starting Equipment for New Character

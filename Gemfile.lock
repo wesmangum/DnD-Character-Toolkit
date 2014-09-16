@@ -62,6 +62,9 @@ GEM
     fabrication (2.11.3)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     foundation-rails (5.4.3.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -290,6 +293,7 @@ DEPENDENCIES
   database_cleaner
   devise
   fabrication
+  figaro
   foundation-rails
   haml
   jbuilder (~> 2.0)
