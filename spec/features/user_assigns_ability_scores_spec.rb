@@ -1,14 +1,17 @@
 feature "User assigns Ability Scores to Character", :js => true do
+    background do
+      seed_database()
+      user = Fabricate(:user)
+      login_as(user)
+      click_on "Dashboard"
+      click_on "Create a Character"
+      page.select('Dwarf', :from => 'character_race')
+      click_on "Submit Race"
+      page.select('Fighter', :from => 'character_class')
+      click_on "Submit Class"
+    end
+
   scenario "Happy Path" do
-    seed_database()
-    user = Fabricate(:user)
-    login_as(user)
-    click_on "Dashboard"
-    click_on "Create a Character"
-    page.select('Dwarf', :from => 'character_race')
-    click_on "Submit Race"
-    page.select('Fighter', :from => 'character_class')
-    click_on "Submit Class"
 
     expect(page).to have_content("Now, it's time to generate and assign Ability Scores. Click the 'Generate' button below to roll 6 numbers.")
     click_on "Generate"
@@ -40,15 +43,6 @@ feature "User assigns Ability Scores to Character", :js => true do
   end
 
   scenario "Sad Path, User gets greedy" do
-    seed_database()
-    user = Fabricate(:user)
-    login_as(user)
-    click_on "Dashboard"
-    click_on "Create a Character"
-    page.select('Dwarf', :from => 'character_race')
-    click_on "Submit Race"
-    page.select('Fighter', :from => 'character_class')
-    click_on "Submit Class"
 
     current_path.should == character_abilities_path(Character.first)
     expect(page).to have_content("Now, it's time to generate and assign Ability Scores. Click the 'Generate' button below to roll 6 numbers.")
@@ -76,16 +70,7 @@ feature "User assigns Ability Scores to Character", :js => true do
     expect(character.cha).to be_nil
   end
 
-  scenario "Sad Path, User doesn't select all  Ability scores" do
-    seed_database()
-    user = Fabricate(:user)
-    login_as(user)
-    click_on "Dashboard"
-    click_on "Create a Character"
-    page.select('Dwarf', :from => 'character_race')
-    click_on "Submit Race"
-    page.select('Fighter', :from => 'character_class')
-    click_on "Submit Class"
+  scenario "Sad Path, User doesn't select all Ability scores" do
 
     current_path.should == character_abilities_path(Character.first)
     expect(page).to have_content("Now, it's time to generate and assign Ability Scores. Click the 'Generate' button below to roll 6 numbers.")
