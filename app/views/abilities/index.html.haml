@@ -2,6 +2,7 @@
   %p Now, it's time to generate and assign Ability Scores. Click the 'Generate' button below to roll 6 numbers. Then, drag them to the ability you wish to assign them to.
 
   =link_to "Generate", character_generate_ability_scores_path(@character),remote: true
-
+.row
+  =render @character
 .row
   .grid

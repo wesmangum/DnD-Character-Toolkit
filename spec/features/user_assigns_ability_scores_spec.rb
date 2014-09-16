@@ -38,4 +38,42 @@ feature "User assigns Ability Scores to Character", :js => true do
     expect(character.wis).to eq(wis.to_i)
     expect(character.cha).to eq(cha.to_i)
   end
+
+  scenario "Sad Path, User gets greedy" do
+    seed_database()
+    user = Fabricate(:user)
+    login_as(user)
+    click_on "Dashboard"
+    click_on "Create a Character"
+    page.select('Dwarf', :from => 'character_race')
+    click_on "Submit Race"
+    page.select('Fighter', :from => 'character_class')
+    click_on "Submit Class"
+
+    current_path.should == character_abilities_path(Character.first)
+    expect(page).to have_content("Now, it's time to generate and assign Ability Scores. Click the 'Generate' button below to roll 6 numbers.")
+    click_on "Generate"
+    expect(page).to have_css(".score", count: 6)
+
+    best_score = field_labeled("Strength").all("option")[1].value
+
+    select(best_score, from: "Strength")
+    select(best_score, from: "Dexterity")
+    select(best_score, from: "Constitution")
+    select(best_score, from: "Intelligence")
+    select(best_score, from: "Wisdom")
+    select(best_score, from: "Charisma")
+    click_on "Submit Abilities"
+
+    character = Character.first
+    current_path.should == character_abilities_path(character)
+    expect(page).to have_content("You may only assign each value once!")
+
+    expect(character.str).to be_nil
+    expect(character.dex).to be_nil
+    expect(character.const).to be_nil
+    expect(character.int).to be_nil
+    expect(character.wis).to be_nil
+    expect(character.cha).to be_nil
+  end
 end
