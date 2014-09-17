@@ -45,6 +45,7 @@ feature "User assigns skill points", :js => true do
   end
 
   scenario "Happy path" do
+    pending "character skill model implementation"
     current_path.should == character_skills_path(Character.first)
     expect(page).to have_content("Now that Ability scores are out of the way, let's figure out your character's skills.")
     expect(page).to have_content("Your number of Skill points is determined from your intelligence.")
@@ -59,9 +60,14 @@ feature "User assigns skill points", :js => true do
     expect(page).to have_content("Wisdom Modifier:")
     expect(page).to have_content("Charisma Modifier:")
 
-    excpect(page).to have_content("Appraise")
-    excpect(page).to have_content("Balance")
-    excpect(page).to have_content("Climb")
-    excpect(page).to have_content("Decipher Script")
+    expect(page).to have_content("Climb") #str
+    expect(page).to have_content("Concentration") #const
+    expect(page).to have_content("Heal") #wis
+    expect(page).to have_content("Intimidate") #cha
+    expect(page).to have_content("Move Silently") #dex
+    expect(page).to have_content("Spellcraft") #int
+
+
+
   end
 end

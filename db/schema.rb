@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140915195724) do
+ActiveRecord::Schema.define(version: 20140917161126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 20140915195724) do
     t.integer  "int"
     t.integer  "wis"
     t.integer  "cha"
+    t.integer  "climb"
+    t.integer  "concentration"
+    t.integer  "heal"
+    t.integer  "intimidate"
+    t.integer  "move_silently"
+    t.integer  "spellcraft"
   end
 
   add_index "characters", ["race_id"], name: "index_characters_on_race_id", using: :btree
@@ -43,6 +49,14 @@ ActiveRecord::Schema.define(version: 20140915195724) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+  end
+
+  create_table "skills", force: true do |t|
+    t.string  "name"
+    t.string  "key_ability"
+    t.integer "fighter_proficiency"
+    t.integer "wizard_proficiency"
+    t.integer "monk_proficiency"
   end
 
   create_table "users", force: true do |t|

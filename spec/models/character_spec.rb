@@ -67,6 +67,6 @@ RSpec.describe "Character Abilities" do
     character.generated = generated_scores
     (character.update_attributes(selected_scores)).should eq true
 
-    expect(character.modifiers).to eq [-2, -1, 0, 1, 2, 3]
+    expect(character.get_modifiers).to eq [-2, -1, 0, 1, 2, 3]
   end
 end
