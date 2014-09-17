@@ -49,7 +49,8 @@ class Character < ActiveRecord::Base
     when "Rogue"
       base = 8
     end
-    points = (base * get_modifiers("int")[0].to_i) * 4
+    points = (base * get_modifiers("int").to_i) * 4
+    points < 4 ? points = 4 : points
     race.name == "Human" ? points += 4 : points
     points
   end

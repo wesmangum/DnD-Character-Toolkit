@@ -42,24 +42,32 @@ feature "User assigns skill points", :js => true do
     select(wis, from: "Wisdom")
     select(cha, from: "Charisma")
     click_on "Submit Abilities"
+    character = Character.last
+    character.selected = {
+      "str" => "11",
+      "dex" => "12",
+      "const" => "13",
+      "int" => "14",
+      "wis" => "15",
+      "cha" => "16"
+    }
+    character.generated = [11, 12, 13, 14, 15, 16]
+    character.update_attributes(character.selected)
   end
 
   scenario "Happy path" do
+    pending "figuring out how to test the changing skill points"
     current_path.should == character_skills_path(Character.first)
     expect(page).to have_content("Now that Ability scores are out of the way, let's figure out your character's skills.")
-    expect(page).to have_content("Your number of Skill points is determined from your intelligence.")
-    expect(page).to have_content("Each Skill your are proficient in is marked blue. These sills only take one skill point to advance.")
-    expect(page).to have_content("Skills marked in red are cross-class skills. You will need to invest two skill points to advance one level.")
-
-    expect(page).to have_content("You'll notice that Skills already have numbers next to them. Those are determined from your Ability Modifiers, listed below.")
     expect(page).to have_css(".score", count: 6)
 
-    expect(page).to have_content("Climb") #str
-    expect(page).to have_content("Concentration") #const
-    expect(page).to have_content("Heal") #wis
-    expect(page).to have_content("Intimidate") #cha
-    expect(page).to have_content("Move Silently") #dex
-    expect(page).to have_content("Spellcraft") #int
+    expect(page).to have_content("Points: 20")
+
+    expect(page).to have_css(".cross-class-skill", count: 4)
+    expect(page).to have_css(".class-skill", count: 2)
+    save_and_open_page
+    climb = field_labeled("Climb").all("option")[1].value
+    intimidate = field_labeled("Intimidate").all("option")[1].value
 
   end
 end
