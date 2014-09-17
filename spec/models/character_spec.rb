@@ -69,4 +69,20 @@ RSpec.describe "Character Abilities" do
 
     expect(character.get_modifiers).to eq [-2, -1, 0, 1, 2, 3]
   end
+
+  it "should determine the skill points of the character" do
+    selected_scores = {
+      "str" => "7",
+      "dex" => "8",
+      "const" => "10",
+      "int" => "12",
+      "wis" => "15",
+      "cha" => "16"
+    }
+    character.selected = selected_scores
+    character.generated = generated_scores
+    character.update_attributes(selected_scores)
+
+    expect(character.skill_points).to eq 20
+  end
 end

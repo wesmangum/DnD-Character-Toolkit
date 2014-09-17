@@ -37,6 +37,23 @@ class Character < ActiveRecord::Base
     modifiers
   end
 
+  def skill_points
+    base = 0
+    case dd_class.name
+    when "Cleric", "Fighter", "Paladin", "Sorcerer", "Wizard"
+      base = 2
+    when "Barbarian", "Druid", "Monk"
+      base = 4
+    when "Bard", "Ranger"
+      base = 6
+    when "Rogue"
+      base = 8
+    end
+    points = (base * get_modifiers("int")[0].to_i) * 4
+    race.name == "Human" ? points += 4 : points
+    points
+  end
+
   private
 
   def abilities_match?(selected, generated)

@@ -1,0 +1,4 @@
+.small-12.columns
+  =simple_form_for @character, url: character_skills_path(@character), method: 'post' do |f|
+    - skills.each do |s|
+      =f.input s.name.downcase.tr(" ", "_").to_sym, as: :integer
