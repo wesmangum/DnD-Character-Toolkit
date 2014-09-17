@@ -1,2 +1,11 @@
 %p= "Race: #{@character.race.name}"
 %p= "Class: #{@character.dd_class.name}"
+- unless @character.str.nil?
+  %p Abilities:
+  %ul
+    %li= "Strength: #{@character.str}"
+    %li= "Dexterity: #{@character.dex}"
+    %li= "Constitution: #{@character.const}"
+    %li= "Intelligence: #{@character.int}"
+    %li= "Wisdom: #{@character.wis}"
+    %li= "Charisma: #{@character.cha}"

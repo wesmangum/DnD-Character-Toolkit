@@ -34,7 +34,7 @@ class Character < ActiveRecord::Base
       end
       i
     end
-    modifiers
+    modifiers.length == 1 ? modifiers[0] : modifiers
   end
 
   def skill_points
@@ -52,6 +52,12 @@ class Character < ActiveRecord::Base
     points = (base * get_modifiers("int")[0].to_i) * 4
     race.name == "Human" ? points += 4 : points
     points
+  end
+
+  def check_proficiency(skill)
+    symbol = "#{dd_class.name.downcase}_proficiency".to_sym
+    proficiency = skill[symbol]
+    proficiency == 1 ? [1, 2, 3, 4] : [2, 4, 6, 8]
   end
 
   private

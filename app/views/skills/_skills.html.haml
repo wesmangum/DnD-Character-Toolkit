@@ -1,4 +1,4 @@
 .small-12.columns
   =simple_form_for @character, url: character_skills_path(@character), method: 'post' do |f|
     - skills.each do |s|
-      =f.input s.name.downcase.tr(" ", "_").to_sym, as: :integer
+      =f.input s.name.downcase.tr(" ", "_").to_sym, label: "#{s.name} (#{character.get_modifiers(s.key_ability)}):", collection: @character.check_proficiency(s)
