@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - "2.1.2"
+addons:
+  postgresql: "9.3"
+before_script:
+  - cp config/database.yml.example config/database.yml
+  - psql -c 'create database dnd_character_toolkit_test;' -U postgres
+

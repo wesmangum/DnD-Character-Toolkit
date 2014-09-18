@@ -42,6 +42,11 @@ feature "User assigns skill points", :js => true do
     select(wis, from: "Wisdom")
     select(cha, from: "Charisma")
     click_on "Submit Abilities"
+  end
+
+  scenario "Happy path" do
+    pending "figuring out how to test the changing skill points"
+
     character = Character.last
     character.selected = {
       :str => "11",
@@ -52,12 +57,9 @@ feature "User assigns skill points", :js => true do
       :cha => "16"
     }
     character.generated = [11, 12, 13, 14, 15, 16]
-    character.update_attributes(character.selected)
-  end
+    expect(character.update_attributes(character.selected)).to eq true
 
-  scenario "Happy path" do
-    pending "figuring out how to test the changing skill points"
-    current_path.should == character_skills_path(Character.first)
+    current_path.should == character_skills_path(character)
     expect(page).to have_content("Now that Ability scores are out of the way, let's figure out your character's skills.")
     expect(page).to have_css(".score", count: 6)
 
@@ -65,7 +67,9 @@ feature "User assigns skill points", :js => true do
 
     expect(page).to have_css(".cross-class-skill", count: 4)
     expect(page).to have_css(".class-skill", count: 2)
+
     save_and_open_page
+
     climb = field_labeled("Climb").all("option")[1].value
     intimidate = field_labeled("Intimidate").all("option")[1].value
 
