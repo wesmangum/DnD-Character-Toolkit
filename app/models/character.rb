@@ -4,7 +4,7 @@ class Character < ActiveRecord::Base
   belongs_to :dd_class
   validate :abilities_valid?, on: :update
 
-  attr_accessor :selected, :generated
+  attr_accessor :selected, :generated, :skills
 
   def abilities_valid?
     unless selected.nil? && generated.nil?
@@ -12,6 +12,12 @@ class Character < ActiveRecord::Base
         errors[:base] << "The character could not be saved."
       end
     end
+  end
+
+  def check_proficiency(skill)
+    symbol = "#{dd_class.name.downcase}_proficiency".to_sym
+    proficiency = skill[symbol]
+    proficiency == 1 ? [1, 2, 3, 4] : [2, 4, 6, 8]
   end
 
   def get_modifiers(ability=["str", "dex", "const", "int", "wis", "cha"])
@@ -49,16 +55,18 @@ class Character < ActiveRecord::Base
     when "Rogue"
       base = 8
     end
-    points = (base * get_modifiers("int").to_i) * 4
+    points = (base + get_modifiers("int").to_i) * 4
     points < 4 ? points = 4 : points
     race.name == "Human" ? points += 4 : points
     points
   end
 
-  def check_proficiency(skill)
-    symbol = "#{dd_class.name.downcase}_proficiency".to_sym
-    proficiency = skill[symbol]
-    proficiency == 1 ? [1, 2, 3, 4] : [2, 4, 6, 8]
+  def skills_valid?
+    unless skills.nil?
+      unless skill_points_match?(skills) && skill_points_selected?(skills)
+        errors[:base] << "The character could not be saved."
+      end
+    end
   end
 
   private
@@ -71,5 +79,15 @@ class Character < ActiveRecord::Base
   def abilities_selected?(selected)
     selected = selected.values.map { |num| num.length < 1 ? nil : num.to_i }
     selected.compact.length == 6
+  end
+
+  def skill_points_match?(skills)
+    skills = skills.values.map { |num| num.to_i }
+    skills.sum == skill_points
+  end
+
+  def skill_points_selected?(skills)
+    skills = skills.values.map { |num| num.length < 1 ? nil : num.to_i }
+    skills.compact.length == 6
   end
 end

@@ -44,12 +44,12 @@ feature "User assigns skill points", :js => true do
     click_on "Submit Abilities"
     character = Character.last
     character.selected = {
-      "str" => "11",
-      "dex" => "12",
-      "const" => "13",
-      "int" => "14",
-      "wis" => "15",
-      "cha" => "16"
+      :str => "11",
+      :dex => "12",
+      :const => "13",
+      :int => "14",
+      :wis => "15",
+      :cha => "16"
     }
     character.generated = [11, 12, 13, 14, 15, 16]
     character.update_attributes(character.selected)
@@ -61,7 +61,7 @@ feature "User assigns skill points", :js => true do
     expect(page).to have_content("Now that Ability scores are out of the way, let's figure out your character's skills.")
     expect(page).to have_css(".score", count: 6)
 
-    expect(page).to have_content("Points: 20")
+    expect(page).to have_content("Points: 16")
 
     expect(page).to have_css(".cross-class-skill", count: 4)
     expect(page).to have_css(".class-skill", count: 2)
