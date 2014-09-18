@@ -3,6 +3,7 @@ class Character < ActiveRecord::Base
   belongs_to :race
   belongs_to :dd_class
   validate :abilities_valid?, on: :update
+  validate :skills_valid?, on: :save_skill_points
 
   attr_accessor :selected, :generated, :skills
 
@@ -43,6 +44,16 @@ class Character < ActiveRecord::Base
     modifiers.length == 1 ? modifiers[0] : modifiers
   end
 
+  def save_skill_points(points)
+    points.each do |key, value|
+      name = key.to_s.tr("_", " ").split.map(&:capitalize).join(" ")
+      skill_table_entry = Skill.find_by(name: name)
+      selected_point = value.to_i
+      self[key] = add_points(skill_table_entry, value)
+    end
+    self.save
+  end
+
   def skill_points
     base = 0
     case dd_class.name
@@ -79,6 +90,16 @@ class Character < ActiveRecord::Base
   def abilities_selected?(selected)
     selected = selected.values.map { |num| num.length < 1 ? nil : num.to_i }
     selected.compact.length == 6
+  end
+
+  def add_points(skill, selected_points)
+    if check_proficiency(skill) == [1, 2, 3, 4]
+      selected_points.to_i + get_modifiers(skill.key_ability)
+    elsif check_proficiency(skill) == [2, 4, 6, 8]
+      (selected_points.to_i/2) + get_modifiers(skill.key_ability)
+    else
+      return nil
+    end
   end
 
   def skill_points_match?(skills)

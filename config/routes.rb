@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :classes, only: [:index, :create]
     resources :abilities, only: [:index, :create]
     get '/generate' => 'abilities#generate', as: 'generate_ability_scores'
-    resources :skills, only: :index
+    resources :skills, only: [:index, :create]
+    resources :description, only: :index
   end
 
   # Example of regular route:

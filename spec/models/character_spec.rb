@@ -16,6 +16,7 @@ RSpec.describe "Character Abilities" do
       } }
 
   before(:each) do
+    seed_database()
     user.confirm!
   end
 
@@ -148,6 +149,37 @@ RSpec.describe "Character Abilities" do
 
       character.skills = selected_points
       (character.send :skill_points_selected?, selected_points).should_not eq true
+    end
+  end
+
+  describe "save_skill_points" do
+    before(:each) do
+      character.selected = selected_scores
+      character.generated = generated_scores
+      character.update_attributes(selected_scores)
+    end
+
+    it "should save the skill points with base points and user selects points and pass" do
+      selected_points = {
+        "climb" => "4",
+        "concentration" => "4",
+        "heal" => "4",
+        "intimidate" => "4",
+        "move_silently" => "2",
+        "spellcraft" => "2"
+      }
+
+      character.skills = selected_points
+
+      (character.save_skill_points(selected_points)).should eq true
+
+      expect(character.climb).to eq 4
+      expect(character.concentration).to eq 5
+      expect(character.heal).to eq 4
+      expect(character.intimidate).to eq 5
+      expect(character.move_silently).to eq 3
+      expect(character.spellcraft).to eq 3
+
     end
   end
 end

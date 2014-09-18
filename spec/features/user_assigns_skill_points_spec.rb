@@ -45,7 +45,7 @@ feature "User assigns skill points", :js => true do
   end
 
   scenario "Happy path" do
-    pending "figuring out how to test the changing skill points"
+    pending "adding selected points to the base skill proficiency"
 
     character = Character.last
     character.selected = {
@@ -63,15 +63,21 @@ feature "User assigns skill points", :js => true do
     expect(page).to have_content("Now that Ability scores are out of the way, let's figure out your character's skills.")
     expect(page).to have_css(".score", count: 6)
 
-    expect(page).to have_content("Points: 16")
-
     expect(page).to have_css(".cross-class-skill", count: 4)
     expect(page).to have_css(".class-skill", count: 2)
 
-    save_and_open_page
+    select(4, from: "Climb")
+    select(2, from: "Concentration")
+    select(2, from: "Heal")
+    select(4, from: "Intimidate")
+    select(2, from: "Move Silently")
+    select(2, from: "Spellcraft")
+    click_on "Submit Skills"
 
-    climb = field_labeled("Climb").all("option")[1].value
-    intimidate = field_labeled("Intimidate").all("option")[1].value
+    current_path.should == character_description_index_path(character)
+
+    expect(Character.first.climb).to eq 4
+    expect(Character.first.spellcraft).to eq 4
 
   end
 end
