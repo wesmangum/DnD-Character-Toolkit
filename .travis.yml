@@ -4,7 +4,7 @@ rvm:
 addons:
   postgresql: "9.3"
 before_script:
-  - cp config/database.yml.example config/database.yml
+  - cp config/database.yml.travis config/database.yml
   - psql -c 'create database DnD_Character_Toolkit_test;' -U postgres
 
 # uncomment this line if your project needs to run something other than `rake`:
