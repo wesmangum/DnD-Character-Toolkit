@@ -7,7 +7,7 @@ class SkillsController < ApplicationController
   def create
     @character = Character.find_by id: params[:character_id]
     @character.skills = skill_params
-    if @character.update_attributes(skill_params)
+    if @character.save_skill_points(skill_params)
       flash.notice = "Your Character's skills were saved!"
       redirect_to character_description_index_path(@character)
     else

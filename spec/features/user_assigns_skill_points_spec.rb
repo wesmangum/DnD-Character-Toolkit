@@ -45,8 +45,6 @@ feature "User assigns skill points", :js => true do
   end
 
   scenario "Happy path" do
-    pending "adding selected points to the base skill proficiency"
-
     character = Character.last
     character.selected = {
       :str => "11",
@@ -76,8 +74,52 @@ feature "User assigns skill points", :js => true do
 
     current_path.should == character_description_index_path(character)
 
-    expect(Character.first.climb).to eq 4
-    expect(Character.first.spellcraft).to eq 4
+    character = Character.first
+    expect(character.climb).to eq 4
+    expect(character.concentration).to eq 2
+    expect(character.heal).to eq 3
+    expect(character.intimidate).to eq 7
+    expect(character.move_silently).to eq 2
+    expect(character.spellcraft).to eq 3
+  end
 
+  scenario "Sad Path, User gets greedy" do
+    pending "figuring out why save is returning true"
+    character = Character.last
+    character.selected = {
+      :str => "11",
+      :dex => "12",
+      :const => "13",
+      :int => "14",
+      :wis => "15",
+      :cha => "16"
+    }
+    character.generated = [11, 12, 13, 14, 15, 16]
+    expect(character.update_attributes(character.selected)).to eq true
+
+    current_path.should == character_skills_path(character)
+    expect(page).to have_content("Now that Ability scores are out of the way, let's figure out your character's skills.")
+    expect(page).to have_css(".score", count: 6)
+
+    expect(page).to have_css(".cross-class-skill", count: 4)
+    expect(page).to have_css(".class-skill", count: 2)
+
+    select(4, from: "Climb")
+    select(4, from: "Concentration")
+    select(4, from: "Heal")
+    select(4, from: "Intimidate")
+    select(4, from: "Move Silently")
+    select(4, from: "Spellcraft")
+    click_on "Submit Skills"
+
+    current_path.should == character_skills_path(character)
+
+    character = Character.first
+    expect(character.climb).to be_nil
+    expect(character.concentration).to be_nil
+    expect(character.heal).to be_nil
+    expect(character.intimidate).to be_nil
+    expect(character.move_silently).to be_nil
+    expect(character.spellcraft).to be_nil
   end
 end

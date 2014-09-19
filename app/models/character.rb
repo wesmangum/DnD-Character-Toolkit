@@ -3,7 +3,7 @@ class Character < ActiveRecord::Base
   belongs_to :race
   belongs_to :dd_class
   validate :abilities_valid?, on: :update
-  validate :skills_valid?, on: :save_skill_points
+  validate :skills_valid?, on: :save
 
   attr_accessor :selected, :generated, :skills
 
