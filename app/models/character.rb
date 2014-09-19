@@ -105,9 +105,4 @@ class Character < ActiveRecord::Base
     skills = skills.values.map { |num| num.to_i }
     skills.sum == skill_points
   end
-
-  # def skill_points_selected?(skills)
-  #   skills = skills.values.map { |num| num.length < 1 ? nil : num.to_i }
-  #   skills.compact.length == 6
-  # end
 end
