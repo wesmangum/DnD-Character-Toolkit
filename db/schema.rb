@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917161126) do
+ActiveRecord::Schema.define(version: 20140919183624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20140917161126) do
     t.integer  "intimidate"
     t.integer  "move_silently"
     t.integer  "spellcraft"
+    t.string   "name"
+    t.string   "sex"
+    t.integer  "height"
+    t.integer  "weight"
+    t.string   "alignment"
+    t.string   "background"
+    t.string   "personality"
+    t.string   "appearance"
   end
 
   add_index "characters", ["race_id"], name: "index_characters_on_race_id", using: :btree
@@ -49,6 +57,8 @@ ActiveRecord::Schema.define(version: 20140917161126) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "heights"
+    t.string   "weights"
   end
 
   create_table "skills", force: true do |t|

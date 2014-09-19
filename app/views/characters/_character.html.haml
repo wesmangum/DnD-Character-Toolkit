@@ -1,11 +1,41 @@
-%p= "Race: #{@character.race.name}"
-%p= "Class: #{@character.dd_class.name}"
+.row
+.small-12.columns
+  %p= "Race: #{@character.race.name}"
+  %p= "Class: #{@character.dd_class.name}"
+.row
 - unless @character.str.nil?
-  %p Abilities:
-  %ul
-    %li= "Strength: #{@character.str}"
-    %li= "Dexterity: #{@character.dex}"
-    %li= "Constitution: #{@character.const}"
-    %li= "Intelligence: #{@character.int}"
-    %li= "Wisdom: #{@character.wis}"
-    %li= "Charisma: #{@character.cha}"
+  .small-6.columns
+    %table
+      %thead
+        %tr
+          %th Abilities
+      %tbody
+        %tr
+          %td Strength
+          %td= @character.str
+        %tr
+          %td Dexterity
+          %td= @character.dex
+        %tr
+          %td Constitution
+          %td= @character.const
+        %tr
+          %td Intelligence
+          %td= @character.int
+        %tr
+          %td Wisdom
+          %td= @character.wis
+        %tr
+          %td Charisma
+          %td= @character.cha
+- unless @character.climb.nil?
+  .small-6.columns
+    %table
+      %thead
+        %tr
+          %th Skills
+      %tbody
+        - skills.each do |s|
+          %tr
+            %td= s.name
+            %td= @character[(s.name.downcase.tr(" ", "_").to_sym)]

@@ -5,7 +5,7 @@
 .row
   .small-12.columns
     %h3 Character:
-    =render @character
+    =render partial: 'characters/character', locals: {skills: @skills, character: @character}
     =link_to "Generate", character_generate_ability_scores_path(@character),remote: true, :class => "button"
 .row
   .grid

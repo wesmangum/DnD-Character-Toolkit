@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources :abilities, only: [:index, :create]
     get '/generate' => 'abilities#generate', as: 'generate_ability_scores'
     resources :skills, only: [:index, :create]
-    resources :description, only: :index
+    resources :description, only: [:index, :create]
+    get '/approve' => 'characters#approve', as: 'approve'
   end
 
   # Example of regular route:

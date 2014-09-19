@@ -1,0 +1,10 @@
+=simple_form_for @character, url: character_description_index_path(@character), method: 'post' do |f|
+    =f.input :name, required: true, wrapper_html: { class: 'small-12 columns' }
+    =f.input :sex, collection: ["Male", "Female"], required: true, wrapper_html: { class: 'small-6 columns' }
+    =f.input :alignment, collection: ["Lawful Good", "True Neutral"], required: true, wrapper_html: { class: 'small-6 columns' }
+    =f.input :height,label: "Height (in inches)", collection: @character.height_range, required: true, as: :select, wrapper_html: { class: 'small-6 columns' }
+    =f.input :weight, label: "Weight (in lbs)", collection: @character.weight_range, required: true, as: :select, wrapper_html: { class: 'small-6 columns' }
+    =f.input :background, as: :text, wrapper_html: { class: 'small-12 columns' }
+    =f.input :personality, as: :text, wrapper_html: { class: 'small-12 columns' }
+    =f.input :appearance, label: "Physical Appearance", as: :text, wrapper_html: { class: 'small-12 columns' }
+    =f.button :submit, "Submit Description"

@@ -3,7 +3,7 @@
     %p Now that Ability scores are out of the way, let's figure out your character's skills.
     %p Your number of Skill points is determined from your intelligence. Each Skill your are proficient in is marked blue. These sills only take one skill point to advance. Skills marked in red are cross-class skills. You will need to invest two skill points to advance one level. You'll notice that Skills already have numbers next to them. Those are determined from your Ability Modifiers, listed below.
   .small-12.columns
-    =render @character
+    =render partial: 'characters/character', locals: {skills: @skills, character: @character}
   .small-12.columns
     =render partial: "modifiers", object: @character.get_modifiers
 

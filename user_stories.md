@@ -177,11 +177,8 @@ I want to add description to my character
   * Height (Slider determined from Race)
   * Weight (Slider determined from Race)
   * Alignment (Dropdown)
-  * Background (Dropdown)
+  * Background (Text)
   * Personality (Text)
-  * Ideals (Dropdown determined from Background)
-  * Bonds (Text)
-  * Flaws (Text)
   * Physical Appearance (Text)
 
 

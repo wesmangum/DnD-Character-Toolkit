@@ -4,8 +4,9 @@ class Character < ActiveRecord::Base
   belongs_to :dd_class
   validate :abilities_valid?, on: :update
   validate :skills_valid?, on: :update
+  validate :description_valid?, on: :update
 
-  attr_accessor :selected, :generated, :skills
+  attr_accessor :selected, :generated, :skills, :description
 
   def abilities_valid?
     unless selected.nil? && generated.nil?
@@ -19,6 +20,14 @@ class Character < ActiveRecord::Base
     symbol = "#{dd_class.name.downcase}_proficiency".to_sym
     proficiency = skill[symbol]
     proficiency == 1 ? [1, 2, 3, 4] : [2, 4, 6, 8]
+  end
+
+  def description_valid?
+    unless description.nil?
+      unless description_required_fields_selected?(description)
+        errors[:base] << "The character could not be saved."
+      end
+    end
   end
 
   def get_modifiers(ability=["str", "dex", "const", "int", "wis", "cha"])
@@ -42,6 +51,17 @@ class Character < ActiveRecord::Base
       i
     end
     modifiers.length == 1 ? modifiers[0] : modifiers
+  end
+
+  def height_range
+    case race.name
+    when "Dwarf"
+      (48..60)
+    when "Elf"
+      (48..84)
+    when "Human"
+      (60..84)
+    end
   end
 
   def save_skill_points(points)
@@ -79,6 +99,17 @@ class Character < ActiveRecord::Base
     end
   end
 
+  def weight_range
+    case race.name
+    when "Dwarf"
+      return (100..200).step(5)
+    when "Elf"
+      return (110..250)
+    when "Human"
+      return (120..300)
+    end
+  end
+
   private
 
   def abilities_match?(selected, generated)
@@ -99,6 +130,16 @@ class Character < ActiveRecord::Base
     else
       return nil
     end
+  end
+
+  def description_required_fields_selected?(selected_description)
+    name = selected_description[:name] == ""
+    sex = selected_description[:sex] == ""
+    alignment = selected_description[:alignment] == ""
+    height = selected_description[:height] == ""
+    weight = selected_description[:weight] == ""
+
+    name && sex && alignment && height && weight ? false : true
   end
 
   def skill_points_match?(skills)
