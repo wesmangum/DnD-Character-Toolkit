@@ -1,6 +1,9 @@
 language: ruby
 rvm:
   - "2.1.2"
+before_script:
+  - cp config/database.yml.example config/database.yml
+  - psql -c 'create database DnD-Character-Toolkit_test;' -U postgres
 
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
