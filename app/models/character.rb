@@ -3,7 +3,7 @@ class Character < ActiveRecord::Base
   belongs_to :race
   belongs_to :dd_class
   validate :abilities_valid?, on: :update
-  validate :skills_valid?, on: :save
+  validate :skills_valid?, on: :update
 
   attr_accessor :selected, :generated, :skills
 
@@ -48,7 +48,6 @@ class Character < ActiveRecord::Base
     points.each do |key, value|
       name = key.to_s.tr("_", " ").split.map(&:capitalize).join(" ")
       skill_table_entry = Skill.find_by(name: name)
-      selected_point = value.to_i
       self[key] = add_points(skill_table_entry, value)
     end
     self.save
@@ -74,7 +73,7 @@ class Character < ActiveRecord::Base
 
   def skills_valid?
     unless skills.nil?
-      unless skill_points_match?(skills) && skill_points_selected?(skills)
+      unless skill_points_match?(skills)
         errors[:base] << "The character could not be saved."
       end
     end
@@ -107,8 +106,8 @@ class Character < ActiveRecord::Base
     skills.sum == skill_points
   end
 
-  def skill_points_selected?(skills)
-    skills = skills.values.map { |num| num.length < 1 ? nil : num.to_i }
-    skills.compact.length == 6
-  end
+  # def skill_points_selected?(skills)
+  #   skills = skills.values.map { |num| num.length < 1 ? nil : num.to_i }
+  #   skills.compact.length == 6
+  # end
 end

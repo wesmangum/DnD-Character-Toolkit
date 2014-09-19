@@ -119,8 +119,7 @@ RSpec.describe "Character Abilities" do
       }
 
       character.skills = selected_points
-      (character.send :skill_points_match?, selected_points).should eq true
-      (character.send :skill_points_selected?, selected_points).should eq true
+      (character.save).should eq true
     end
 
     it "should compare the skills points with the user's selection and fail because of greedy user" do
@@ -134,21 +133,21 @@ RSpec.describe "Character Abilities" do
       }
 
       character.skills = selected_points
-      (character.send :skill_points_match?, selected_points).should_not eq true
+      (character.save).should_not eq true
     end
 
-    it "should compare the skills points with the user's selection and fail because of unfinished selection" do
+    it "should compare the skills points with the user's selection and pass because of unfinished selection" do
       selected_points = {
         "climb" => "4",
         "concentration" => "4",
         "heal" => "8",
         "intmimdate" => "8",
-        "move_silently" => "",
+        "move_silently" => "4",
         "spellcraft" => ""
       }
 
       character.skills = selected_points
-      (character.send :skill_points_selected?, selected_points).should_not eq true
+      (character.save).should eq true
     end
   end
 
@@ -161,12 +160,12 @@ RSpec.describe "Character Abilities" do
 
     it "should save the skill points with base points and user selects points and pass" do
       selected_points = {
-        "climb" => "4",
-        "concentration" => "4",
-        "heal" => "4",
-        "intimidate" => "4",
-        "move_silently" => "2",
-        "spellcraft" => "2"
+        "climb" => "4", #class
+        "concentration" => "4", #class
+        "heal" => "8", #cross
+        "intimidate" => "8", #cross
+        "move_silently" => "2", #class
+        "spellcraft" => "2" #cross
       }
 
       character.skills = selected_points
@@ -175,11 +174,32 @@ RSpec.describe "Character Abilities" do
 
       expect(character.climb).to eq 4
       expect(character.concentration).to eq 5
-      expect(character.heal).to eq 4
-      expect(character.intimidate).to eq 5
+      expect(character.heal).to eq 6
+      expect(character.intimidate).to eq 7
       expect(character.move_silently).to eq 3
       expect(character.spellcraft).to eq 3
+    end
 
+    it "should save the skill points with base points and user selects points and fail" do
+      selected_points = {
+        "climb" => "4", #class
+        "concentration" => "4", #class
+        "heal" => "8", #cross
+        "intimidate" => "8", #cross
+        "move_silently" => "4", #class
+        "spellcraft" => "8" #cross
+      }
+
+      character.skills = selected_points
+
+      (character.save).should eq false
+
+      expect(character.climb).to be_nil
+      expect(character.concentration).to be_nil
+      expect(character.heal).to be_nil
+      expect(character.intimidate).to be_nil
+      expect(character.move_silently).to be_nil
+      expect(character.spellcraft).to be_nil
     end
   end
 end
