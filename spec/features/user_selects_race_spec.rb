@@ -14,12 +14,11 @@
 # * User will Confirm their Race selection by clicking "Submit Race"
 
 feature "User Creates Character & Selects Race" do
+  background do
+    fill_out_character()
+  end
+
   scenario "Happy Path" do
-    seed_database()
-    user = Fabricate(:user)
-    login_as(user)
-    click_on "Dashboard"
-    click_on "Create a Character"
     expect(page).to have_content("You're on the first step to creating your character! The first step is to decide on a race. Select one from the dropdown below.")
     page.select('Dwarf', :from => 'character_race')
     click_on "Submit Race"

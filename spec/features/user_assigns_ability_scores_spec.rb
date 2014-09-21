@@ -1,14 +1,6 @@
 feature "User assigns Ability Scores to Character", :js => true do
     background do
-      seed_database()
-      user = Fabricate(:user)
-      login_as(user)
-      click_on "Dashboard"
-      click_on "Create a Character"
-      page.select('Dwarf', :from => 'character_race')
-      click_on "Submit Race"
-      page.select('Fighter', :from => 'character_class')
-      click_on "Submit Class"
+      fill_out_character([:race, :class])
     end
 
   scenario "Happy Path" do

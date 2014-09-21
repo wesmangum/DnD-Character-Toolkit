@@ -182,7 +182,7 @@ I want to add description to my character
   * Physical Appearance (Text)
 
 
-##User Selects Starting Equipment for New Character
+<!-- ##User Selects Starting Equipment for New Character
 
 As a User
 In order to protect my character from the forces of evil
@@ -198,7 +198,7 @@ I want to select my Character's starting equipment
 * Once Class, Race, and Description are selected, clicking "Equipment" will let the user determine their starting equipment
   * User can choose Starting Eqpuipment based on their Class and Background, or select their own.
   * After selecting armor, the Character's Armor Class is calculated from their armor and Dexterity Modifier
-* User will confirm their Equipment selection by clicking on another section to continue their Character Creation
+* User will confirm their Equipment selection by clicking on another section to continue their Character Creation -->
 
 
 ##User Saves their New Character

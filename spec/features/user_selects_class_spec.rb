@@ -16,15 +16,10 @@
 # * User will confirm their Class selection by clicking on another section to continue ther Character Creation
 
 feature "User Selects Class" do
+  background do
+    fill_out_character([:race])
+  end
   scenario "Happy Path" do
-    seed_database()
-    user = Fabricate(:user)
-    login_as(user)
-    click_on "Dashboard"
-    click_on "Create a Character"
-    page.select('Dwarf', :from => 'character_race')
-    click_on "Submit Race"
-
     expect(page).to have_content("Great! Now, select your class.")
     page.select('Fighter', :from => 'character_class')
     click_on "Submit Class"
