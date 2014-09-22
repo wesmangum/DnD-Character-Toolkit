@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     get '/generate' => 'abilities#generate', as: 'generate_ability_scores'
     resources :skills, only: [:index, :create]
     resources :description, only: [:index, :create]
-    get '/approve' => 'characters#approve', as: 'approve'
+    get '/confirm' => 'characters#confirm', as: 'confirm'
+    post '/confirm' => 'characters#approve'
   end
 
   # Example of regular route:

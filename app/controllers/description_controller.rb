@@ -9,7 +9,7 @@ class DescriptionController < ApplicationController
     @character.description = description_params
     if @character.update_attributes(description_params)
       flash.notice = "Your Character's description was saved!"
-      redirect_to character_approve_path(@character)
+      redirect_to character_confirm_path(@character)
     else
       flash.alert = @character.errors[:base]
       redirect_to character_description_index_path(@character)

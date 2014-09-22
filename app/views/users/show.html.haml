@@ -1,2 +1,7 @@
 .row
-  =link_to "Create a Character", new_character_path, :class => "button"
+  .small-2.columns
+    =link_to "Create a Character", new_character_path, :class => "button"
+  .small-10.columns
+    - @user.characters.each do |character|
+      - unless !character.finalized?
+        %p= character.name

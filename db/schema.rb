@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919183624) do
+ActiveRecord::Schema.define(version: 20140922003110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140919183624) do
     t.string   "background"
     t.string   "personality"
     t.string   "appearance"
+    t.boolean  "finalized?",    default: false
   end
 
   add_index "characters", ["race_id"], name: "index_characters_on_race_id", using: :btree
