@@ -1,76 +1,81 @@
 .row
-  - unless @character.name.nil?
+  - unless character.name.nil?
     .small-6.columns
-      %p= "Name: #{@character.name}"
+      %p= "Name: #{character.name}"
     .small-6.columns
-      %p= "Sex: #{@character.sex}"
+      %p= "Sex: #{character.sex}"
   .small-6.columns
-    %p= "Race: #{@character.race.name}"
+    %p= "Race: #{character.race.name}"
   .small-6.columns
-    %p= "Class: #{@character.dd_class.name}"
-  -unless @character.alignment.nil?
+    %p= "Class: #{character.dd_class.name}"
+
+  -unless character.alignment.nil?
     .small-6.columns
-      %p= "Alignment: #{@character.alignment}"
+      %p= "Alignment: #{character.alignment}"
     .small-6.columns
-      %p= "Height: #{@character.height} in."
+      %p= "Height: #{character.height} in."
     .small-6.columns
-      %p= "Weight: #{@character.weight} lbs."
-  -unless @character.background.nil?
+      %p= "Weight: #{character.weight} lbs."
+
+  -unless character.background.nil?
     .small-12.large-6.columns
       %table
         %tbody
         %tr
           %td Background
-          %td= @character.background
-  -unless @character.personality.nil?
+          %td= character.background
+
+  -unless character.personality.nil?
     .small-12.large-6.columns
       %table
         %tbody
         %tr
           %td Personality
-          %td= @character.personality
-  -unless @character.appearance.nil?
+          %td= character.personality
+
+  -unless character.appearance.nil?
     .small-12.large-6.columns
       %table
         %tbody
         %tr
           %td Appearance
-          %td= @character.appearance
+          %td= character.appearance
 
 .row
-- unless @character.str.nil?
-  .small-12.large-6.columns
-    %table
-      %thead
-        %tr
-          %th Abilities
-      %tbody
-        %tr
-          %td Strength
-          %td= @character.str
-        %tr
-          %td Dexterity
-          %td= @character.dex
-        %tr
-          %td Constitution
-          %td= @character.const
-        %tr
-          %td Intelligence
-          %td= @character.int
-        %tr
-          %td Wisdom
-          %td= @character.wis
-        %tr
-          %td Charisma
-          %td= @character.cha
-- unless @character.climb.nil?
-  .small-12.large-6.columns
-    %table
-      %thead
-        %tr
-          %th Skills
-      %tbody
-        - skills.each do |s|
+  - unless character.str.nil?
+    .small-12.large-6.columns
+      %table
+        %thead
           %tr
-            %td= s.name
-            %td= @character[(s.name.downcase.tr(" ", "_").to_sym)]
+            %th Abilities
+        %tbody
+          %tr
+            %td Strength
+            %td= character.str
+          %tr
+            %td Dexterity
+            %td= character.dex
+          %tr
+            %td Constitution
+            %td= character.const
+          %tr
+            %td Intelligence
+            %td= character.int
+          %tr
+            %td Wisdom
+            %td= character.wis
+          %tr
+            %td Charisma
+            %td= character.cha
+
+  - unless character.climb.nil?
+    .small-12.large-6.columns
+      %table
+        %thead
+          %tr
+            %th Skills
+        %tbody
+          - skills.each do |s|
+            %tr
+              %td= s.name
+              %td= character[(s.name.downcase.tr(" ", "_").to_sym)]

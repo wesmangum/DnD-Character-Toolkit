@@ -1,13 +1,11 @@
 class RacesController < ApplicationController
   def index
-    @character = Character.find_by id: params[:character_id]
     @races = Race.all
     return @races, @character
   end
 
   def create
-    @character = Character.find_by id: params[:character_id]
-    @race = Race.find_by params[:character][:race_id]
+    @race = Race.find_by id: params[:character][:race]
     @character.race = @race
     if @character.save!
       flash.notice = "Your Character's race was saved!"

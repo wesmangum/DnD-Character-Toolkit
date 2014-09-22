@@ -3,5 +3,9 @@
     =link_to "Create a Character", new_character_path, :class => "button"
   .small-10.columns
     - @user.characters.each do |character|
-      - unless !character.finalized?
-        %p= character.name
+      - if character.finalized?
+        .row
+          .small-6.columns
+          %p= character.name
+          .small-6.columns
+            =link_to "View", character_path(character)

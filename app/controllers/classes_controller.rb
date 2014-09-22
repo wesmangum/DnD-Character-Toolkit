@@ -1,12 +1,10 @@
 class ClassesController < ApplicationController
   def index
-    @character = Character.find_by id: params[:character_id]
     @classes = DdClass.all
     return @classes, @character
   end
 
   def create
-    @character = Character.find_by id: params[:character_id]
     @class = DdClass.find_by id: params[:character][:class]
     @character.dd_class = @class
     if @character.save!

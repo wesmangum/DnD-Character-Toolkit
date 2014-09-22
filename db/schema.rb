@@ -58,8 +58,6 @@ ActiveRecord::Schema.define(version: 20140922003110) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.string   "heights"
-    t.string   "weights"
   end
 
   create_table "skills", force: true do |t|

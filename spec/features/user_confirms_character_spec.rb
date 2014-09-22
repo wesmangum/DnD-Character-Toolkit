@@ -37,4 +37,15 @@ feature "User confirms character", :js => true do
 
     expect(page).to have_content("Gimley")
   end
+
+  scenario "Sad path, User tried to go back and edit character after confirmation" do
+    click_on "Confirm Character"
+
+    current_path.should == user_path(Character.first.user)
+
+    visit character_races_path(Character.first)
+
+    current_path.should == user_path(Character.first.user)
+    expect(page).to have_content("Sorry, that character has been finalized. Finalized characters cannot be edited.")
+  end
 end
