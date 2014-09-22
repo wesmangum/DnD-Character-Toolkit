@@ -4,9 +4,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :fetch_character
+  before_filter :check_for_user
+  skip_before_filter :check_for_user, if: :devise_controller?
   before_filter :finalized
 
   attr_accessor :character
+
+  def check_for_user
+    unless current_user
+      flash.notice = "You must be Logged in to perform that action."
+      redirect_to root_path
+    end
+  end
 
   def fetch_character
     @character = Character.find_by id: params[:character_id]
