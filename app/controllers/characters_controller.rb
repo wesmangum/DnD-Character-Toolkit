@@ -1,4 +1,7 @@
 class CharactersController < ApplicationController
+  skip_before_filter :fetch_character, only: [:new]
+  skip_before_filter :finalized, only: [:show]
+
   def approve
     if @character.update_attributes(finalized?: true)
       redirect_to user_path(@character.user)
@@ -18,7 +21,6 @@ class CharactersController < ApplicationController
   end
 
   def show
-    @character = Character.find_by id: params[:id]
     @skills = Skill.all
     return @skills, @character
   end

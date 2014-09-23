@@ -4,9 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :fetch_character
+  skip_before_filter :fetch_character, if: :devise_controller?
   before_filter :check_for_user
   skip_before_filter :check_for_user, if: :devise_controller?
   before_filter :finalized
+  skip_before_filter :finalized, if: :devise_controller?
 
   attr_accessor :character
 
@@ -18,7 +20,15 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_character
-    @character = Character.find_by id: params[:character_id]
+    if params[:character_id]
+      @character = Character.find_by id: params[:character_id]
+    else
+      @character = Character.find_by id: params[:id]
+    end
+    unless current_user == @character.user
+      flash.notice = "You are not authorized to visit this page."
+      redirect_to root_path
+    end
   end
 
   def finalized

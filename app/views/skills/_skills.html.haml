@@ -1,4 +1,6 @@
-%p= "Points: #{character.skill_points}"
+.small-12.columns
+  %h4.total-points= "Total Points: #{character.skill_points}"
+  %h4.points-left= "Points Left: #{character.skill_points}"
 .small-12.columns
   =simple_form_for @character, url: character_skills_path(@character), method: 'post' do |f|
     - skills.each do |s|

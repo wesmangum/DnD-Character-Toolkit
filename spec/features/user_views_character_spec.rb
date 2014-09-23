@@ -18,7 +18,7 @@ feature "User views character", :js => true do
 
     visit character_path(Character.first)
     current_path.should == root_path
-    expect(page).to have_content("You must be Logged in to perform that action.")
+    expect(page).to have_content("You are not authorized to visit this page.")
   end
 
   scenario "Sad Path, user tries to view a character that does not belong to them" do
@@ -27,6 +27,6 @@ feature "User views character", :js => true do
 
     visit character_path(Character.first)
     current_path.should == root_path
-    expect(page).to have_content("You must be Logged in to perform that action.")
+    expect(page).to have_content("You are not authorized to visit this page.")
   end
 end

@@ -1,8 +1,3 @@
-%p Modifiers:
-%ul.row
-  %li.score.small-2.columns= "Strength Modifier: #{modifiers[0]}"
-  %li.score.small-2.columns= "Dexterity Modifier: #{modifiers[1]}"
-  %li.score.small-2.columns= "Constitution Modifier: #{modifiers[2]}"
-  %li.score.small-2.columns= "Intelligence Modifier: #{modifiers[3]}"
-  %li.score.small-2.columns= "Wisdom Modifier: #{modifiers[4]}"
-  %li.score.small-2.columns= "Charisma Modifier: #{modifiers[5]}"
+%h3 Modifiers:
+- modifiers.each do |modifier|
+  .score.small-2.columns= "Strength Modifier: #{modifier}"

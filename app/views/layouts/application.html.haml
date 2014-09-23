@@ -4,6 +4,7 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    =favicon_link_tag "d20.ico"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
     :javascript
@@ -69,6 +70,6 @@
       .alert-box.alert{ "data-alert" => "" }
         = alert
         %a.close{ href: "#" } &times;
-
-    = yield
+    .content.row
+      = yield
     = javascript_include_tag "application"

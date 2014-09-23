@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-  Race.create([{name: 'Dwarf'}, {name: 'Elf'}])
-  DdClass.create([{name: 'Fighter'}, {name: 'Wizard'}])
+  Race.create([{name: 'Dwarf'}, {name: 'Elf'}, {name: 'Human'}])
+  DdClass.create([{name: 'Fighter'}, {name: 'Wizard'}, {name: "Monk"}])
 
   Skill.create([{name: "Climb", key_ability: "str", fighter_proficiency: 1, monk_proficiency: 1, wizard_proficiency: 2}])
   Skill.create([{name: "Concentration", key_ability: "const", fighter_proficiency: 2, monk_proficiency: 1, wizard_proficiency: 1}])

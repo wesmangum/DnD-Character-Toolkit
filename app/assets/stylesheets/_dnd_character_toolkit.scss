@@ -2,21 +2,60 @@
 // @import url(http://fonts.googleapis.com/css?family=Merriweather);
 @import "foundation/components/buttons";
 
+body {
+  background: asset-url("backgrounds/bg-tile.jpg", image);
+}
+
+.content {
+  padding: 2em;
+}
+
 nav.top-bar{
   li.name > h1 > a > img {
   height: 30px;
   }
 }
 
-.side-menu {
-  a {
+h1 {
+  padding-bottom: 1em;
+  width: 100%;
+  text-align: center;
+}
+
+.character-stat, .score {
+  p {
+    font-weight: bold;
+  }
+}
+
+.session-links {
+  .facebook {
     @include button();
-    &.disabled {
-      @include button($disabled:true);
+    background: rgb(59, 89, 152);
+    color: white;
+    &:hover {
+      background: darken(rgb(59, 89, 152), 10%);
+    }
+  }
+  .twitter {
+    @include button();
+    background: rgb(0, 132, 180);
+    color: white;
+
+    &:hover {
+      background: darken(rgb(0, 132, 180), 10%);
     }
   }
 }
 
 .score {
   text-align: center;
+}
+
+.cross-class-skill {
+  color: $alert-color;
+}
+
+.class-skill {
+  color: $success-color;
 }

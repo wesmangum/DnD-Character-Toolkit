@@ -1,20 +1,20 @@
 .row
   - unless character.name.nil?
-    .small-6.columns
+    .character-stat.small-6.columns
       %p= "Name: #{character.name}"
-    .small-6.columns
+    .character-stat.small-6.columns
       %p= "Sex: #{character.sex}"
-  .small-6.columns
+  .character-stat.small-6.columns
     %p= "Race: #{character.race.name}"
-  .small-6.columns
+  .character-stat.small-6.columns
     %p= "Class: #{character.dd_class.name}"
 
   -unless character.alignment.nil?
-    .small-6.columns
+    .character-stat.small-6.columns
       %p= "Alignment: #{character.alignment}"
-    .small-6.columns
+    .character-stat.small-6.columns
       %p= "Height: #{character.height} in."
-    .small-6.columns
+    .character-stat.small-6.columns
       %p= "Weight: #{character.weight} lbs."
 
   -unless character.background.nil?

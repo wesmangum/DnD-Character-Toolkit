@@ -5,5 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by id: params[:id]
+    unless current_user == @user
+      flash.notice = "You are not authorized to visit this page."
+      redirect_to root_path
+    end
   end
 end
