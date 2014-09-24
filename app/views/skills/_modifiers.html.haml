@@ -1,3 +1,14 @@
 %h3 Modifiers:
-- modifiers.each do |modifier|
-  .score.small-2.columns= "Strength Modifier: #{modifier}"
+.row
+  .score.large-2.small-12.columns
+    %p= "Strength Modifier: #{modifiers[0]}"
+  .score.large-2.small-12.columns
+    %p= "Dexterity Modifier: #{modifiers[1]}"
+  .score.large-2.small-12.columns
+    %p= "Constitution Modifier: #{modifiers[2]}"
+  .score.large-2.small-12.columns
+    %p= "Intelligence Modifier: #{modifiers[3]}"
+  .score.large-2.small-12.columns
+    %p= "Wisdom Modifier: #{modifiers[4]}"
+  .score.large-2.small-12.columns
+    %p= "Charisma Modifier: #{modifiers[5]}"

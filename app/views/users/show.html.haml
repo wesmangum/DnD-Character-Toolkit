@@ -1,13 +1,13 @@
 .row
   - if @user.characters.length < 1
-    .small-10.small-centerd.columns
+    .large-10.small-12.columns
       %h2 Looks like you haven't created a character yet. Click "Create A Character" to get started!
-    .small-4.columns
+    .large-4.small-12.columns
       =link_to "Create a Character", new_character_path, :class => "button"
   - else
-    .small-4.columns
+    .large-4.small-12.columns
       =link_to "Create a Character", new_character_path, :class => "button"
-    .small-8.columns
+    .large-8.small-12.columns
       .row
         %table
           %thead
