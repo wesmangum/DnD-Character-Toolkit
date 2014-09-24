@@ -9,14 +9,18 @@
   Race.create([
     {
       name: 'Dwarf',
-      description: "Hard-headed and short of stature, the Dwarves fight for the glory of their houses."
+      description: "Hard-headed and short of stature, the Dwarves fight for the glory of their houses.",
+      image: "races/dwarf.jpg"
     }, {
       name: 'Elf',
-      description: "The elf are a mighty race, but vanity will be their downfall."
+      description: "The elf are a mighty race, but vanity will be their downfall.",
+      image: "races/elf.jpg"
     }, {
       name: 'Human',
-      description: "Not the most powerful race, but definitely the most numerous and craftiest. Their adaptabiity knows no rival."
+      description: "Not the most powerful race, but definitely the most numerous and craftiest. Their adaptabiity knows no rival.",
+      image: "races/human.jpg"
     }])
+
   DdClass.create([{name: 'Fighter'}, {name: 'Wizard'}, {name: "Monk"}])
 
   Skill.create([{name: "Climb", key_ability: "str", fighter_proficiency: 1, monk_proficiency: 1, wizard_proficiency: 2}])

@@ -7,13 +7,15 @@
     var race_id = $(".races option:selected").val();
     var character_id = $(".character_id input").val();
 
+    $(".description").empty();
+
     if (race_id) {
       $.ajax({
         url: "/characters/"+character_id+"/races/"+race_id,
         type: 'get',
         dataType: 'html',
         success:(function(html) {
-                  $(".description").empty().append(html);
+                  $(".description").append(html);
                 })
       });
     };
