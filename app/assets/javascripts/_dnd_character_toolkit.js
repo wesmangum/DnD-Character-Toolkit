@@ -1,13 +1,30 @@
 (function  () {
 
+  $(".classes select").on("change", updateClasses);
   $(".races select").on("change", updateRaces);
   $(".skills select").on("change", updateSkills);
+
+  function updateClasses () {
+    var class_id = $(".classes option:selected").val();
+    var character_id = $(".character_id input").val();
+
+    if (class_id) {
+      $.ajax({
+        url: "/characters/"+character_id+"/classes/"+class_id,
+        type: 'get',
+        dataType: 'html',
+        success:(function(html) {
+                  $(".description").fadeOut(400, function() {
+                    $(".description").empty().append(html).hide().fadeIn(400);
+                  });
+                })
+      });
+    };
+  }
 
   function updateRaces () {
     var race_id = $(".races option:selected").val();
     var character_id = $(".character_id input").val();
-
-    $(".description").empty();
 
     if (race_id) {
       $.ajax({
@@ -15,7 +32,9 @@
         type: 'get',
         dataType: 'html',
         success:(function(html) {
-                  $(".description").append(html);
+                  $(".description").fadeOut(400, function() {
+                    $(".description").empty().append(html).hide().fadeIn(400);
+                  });
                 })
       });
     };

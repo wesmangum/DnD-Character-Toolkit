@@ -4,5 +4,9 @@
 
 .row
   = simple_form_for @character, url: character_classes_path, method: 'post', :html => {:class => "classes"} do |f|
+    = f.input :id, :as => :hidden, :input_html => { :value => @character.id }
     = f.input :class, collection: @classes
     = f.button :submit, "Submit Class"
+
+.row
+  .description

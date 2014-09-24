@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :characters, only: [:new, :show] do
     resources :races, only: [:index, :create, :show]
-    resources :classes, only: [:index, :create]
+    resources :classes, only: [:index, :create, :show]
     resources :abilities, only: [:index, :create]
     get '/generate' => 'abilities#generate', as: 'generate_ability_scores'
     resources :skills, only: [:index, :create]

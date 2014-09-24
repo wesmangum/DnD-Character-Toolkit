@@ -15,13 +15,14 @@
 #   * Likewise, the Hit Die for the character is shown upon selection, along with the Character's Hit Point Maximum
 # * User will confirm their Class selection by clicking on another section to continue ther Character Creation
 
-feature "User Selects Class" do
+feature "User Selects Class", :js => true do
   background do
     fill_out_character([:race])
   end
   scenario "Happy Path" do
     expect(page).to have_content("Great! Now, select your class.")
     page.select('Fighter', :from => 'character_class')
+    expect(page).to have_content("Fighters are notorious for their abilities in all forms of warfare.")
     click_on "Submit Class"
     expect(page).to have_content("Your Character's class was saved!")
     expect(Character.first.dd_class).to eq(DdClass.find_by name: "Fighter")

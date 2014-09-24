@@ -19,7 +19,11 @@ class ClassesController < ApplicationController
       flash.notice = "Your Character could not be saved."
       redirect_to character_classes_path(@character)
     end
+  end
 
+  def show
+    @class = DdClass.find_by id: params[:id]
+    render partial: "show"
   end
 
 end
