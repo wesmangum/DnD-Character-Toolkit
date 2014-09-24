@@ -16,6 +16,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'pg'
 gem 'rails', '4.1.5'
+gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'simple_form'
