@@ -9,13 +9,13 @@
   Race.create([
     {
       name: 'Dwarf',
-      description: "Hard-headed and short of stature, the Dwarves fight for the flory of their houses."
+      description: "Hard-headed and short of stature, the Dwarves fight for the glory of their houses."
     }, {
       name: 'Elf',
       description: "The elf are a mighty race, but vanity will be their downfall."
     }, {
       name: 'Human',
-      description: "NOt the most powerful race, but definitely the most numerous and craftiest. Their adaptabiity knows no rival."
+      description: "Not the most powerful race, but definitely the most numerous and craftiest. Their adaptabiity knows no rival."
     }])
   DdClass.create([{name: 'Fighter'}, {name: 'Wizard'}, {name: "Monk"}])
 
