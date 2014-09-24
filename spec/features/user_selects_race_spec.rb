@@ -26,4 +26,12 @@ feature "User Creates Character & Selects Race" do
     expect(page).to have_content("Your Character's race was saved!")
     expect(Character.first.race).to eq(Race.find_by name: "Elf")
   end
+
+  scenario "Sad Path, user does not select a race" do
+    expect(page).to have_content("You're on the first step to creating your character! The first step is to decide on a race. Select one from the dropdown below.")
+    click_on "Submit Race"
+    current_path.should == character_races_path(Character.first)
+    expect(page).to have_content("Your Character could not be saved.")
+    expect(Character.first.race).to be_nil
+  end
 end

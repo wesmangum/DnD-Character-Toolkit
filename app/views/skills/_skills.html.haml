@@ -2,7 +2,7 @@
   %h4.total-points= "Total Points: #{character.skill_points}"
   %h4.points-left= "Points Left: #{character.skill_points}"
 .small-12.columns
-  =simple_form_for @character, url: character_skills_path(@character), method: 'post' do |f|
+  =simple_form_for @character, url: character_skills_path(@character), method: 'post', :html => {:class => "skills"} do |f|
     - skills.each do |s|
       =f.input s.name.downcase.tr(" ", "_").to_sym, label: "#{s.name} (#{character.get_modifiers(s.key_ability)}):", collection: @character.check_proficiency(s), label_html: { class: (character.check_proficiency(s)[0] == 1 ? 'class-skill' : 'cross-class-skill') }
     =f.button :submit, "Submit Skills"

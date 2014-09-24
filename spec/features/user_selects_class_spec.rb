@@ -26,4 +26,11 @@ feature "User Selects Class" do
     expect(page).to have_content("Your Character's class was saved!")
     expect(Character.first.dd_class).to eq(DdClass.find_by name: "Fighter")
   end
+
+  scenario "Sad Path, user does not select class" do
+    expect(page).to have_content("Great! Now, select your class.")
+    click_on "Submit Class"
+    expect(page).to have_content("Your Character could not be saved")
+    expect(Character.first.dd_class).to be_nil
+  end
 end

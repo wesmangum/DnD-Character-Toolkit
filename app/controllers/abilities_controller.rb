@@ -23,7 +23,7 @@ class AbilitiesController < ApplicationController
       flash.notice = "Your Character's abilities were saved!"
       redirect_to character_skills_path(@character)
     else
-      flash.alert = @character.errors[:base]
+      flash.alert = @character.errors[:base][0]
       redirect_to character_abilities_path(@character)
     end
   end
