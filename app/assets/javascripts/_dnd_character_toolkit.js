@@ -1,6 +1,23 @@
 (function  () {
 
+  $(".races select").on("change", updateRaces);
   $(".skills select").on("change", updateSkills);
+
+  function updateRaces () {
+    var race_id = $(".races option:selected").val();
+    var character_id = $(".character_id input").val();
+
+    if (race_id) {
+      $.ajax({
+        url: "/characters/"+character_id+"/races/"+race_id,
+        type: 'get',
+        dataType: 'html',
+        success:(function(html) {
+                  $(".description").empty().append(html);
+                })
+      });
+    };
+  }
 
   function updateSkills () {
     var values = $(".skills option:selected").map(function  () {

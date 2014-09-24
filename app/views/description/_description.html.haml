@@ -1,4 +1,4 @@
-=simple_form_for @character, url: character_description_index_path(@character), method: 'post' do |f|
+=simple_form_for @character, url: character_description_index_path(@character), method: 'post', :html => {:class => "description"} do |f|
     =f.input :name, required: true, wrapper_html: { class: 'small-12 columns' }
     =f.input :sex, collection: ["Male", "Female"], required: true, wrapper_html: { class: 'small-6 columns' }
     =f.input :alignment, collection: ["Lawful Good", "True Neutral"], required: true, wrapper_html: { class: 'small-6 columns' }

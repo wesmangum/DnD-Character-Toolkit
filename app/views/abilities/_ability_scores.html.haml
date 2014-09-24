@@ -6,7 +6,7 @@
 
 .large-12.columns
     %h3 Abilities:
-    =simple_form_for @character, url: character_abilities_path(@character), method: 'post' do |f|
+    =simple_form_for @character, url: character_abilities_path(@character), method: 'post', :html => {:class => "abilities"} do |f|
         =f.input :str, label: "Strength", collection: @abilities, wrapper_html: { class: 'small-2 columns' }
         =f.input :dex, label: "Dexterity", collection: @abilities, wrapper_html: { class: 'small-2 columns' }
         =f.input :const, label: "Constitution", collection: @abilities, wrapper_html: { class: 'small-2 columns' }

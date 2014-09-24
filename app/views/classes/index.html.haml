@@ -3,6 +3,6 @@
   %p Great! Now, select your class.
 
 .row
-  = simple_form_for @character, url: character_classes_path, method: 'post' do |f|
+  = simple_form_for @character, url: character_classes_path, method: 'post', :html => {:class => "classes"} do |f|
     = f.input :class, collection: @classes
     = f.button :submit, "Submit Class"

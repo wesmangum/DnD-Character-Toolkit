@@ -21,4 +21,8 @@ class RacesController < ApplicationController
     end
   end
 
+  def show
+    @race = Race.find_by id: params[:id]
+    render partial: "show"
+  end
 end

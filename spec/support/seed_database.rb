@@ -1,6 +1,6 @@
 def seed_database
-  Fabricate(:race, name: "Dwarf")
-  Fabricate(:race, name: "Elf")
+  Fabricate(:race, name: "Dwarf", description: "Hard-headed and short of stature, the Dwarves fight for the flory of their houses.")
+  Fabricate(:race, name: "Elf", description: "The elf are a mighty race, but vanity will be their downfall.")
 
   Fabricate(:dd_class, name: "Fighter")
   Fabricate(:dd_class, name: "Wizard")

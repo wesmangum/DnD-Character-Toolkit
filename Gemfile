@@ -15,6 +15,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'pg'
+gem 'postmark-rails'
 gem 'rails', '4.1.5'
 gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 4.0.3'
