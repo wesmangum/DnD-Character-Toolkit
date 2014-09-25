@@ -59,7 +59,9 @@ class Character < ActiveRecord::Base
       (48..60)
     when "Elf"
       (48..84)
-    when "Human"
+    when "Gnome", "Halfling"
+      (36..50)
+    when "Human", "Half-Elf", "Half-Orc"
       (60..84)
     end
   end
@@ -102,11 +104,15 @@ class Character < ActiveRecord::Base
   def weight_range
     case race.name
     when "Dwarf"
-      return (100..200).step(5)
+      (100..200).step(5)
     when "Elf"
-      return (110..250)
-    when "Human"
-      return (120..300)
+      (110..250).step(5)
+    when "Gnome", "Halfling"
+      (30..50).step(5)
+    when "Human", "Half-Elf"
+      (120..300).step(5)
+    when "Half-Orc"
+      (150..350).step(5)
     end
   end
 
