@@ -97,9 +97,9 @@ Wizards depend on intensive study to create their magic. They examine musty old 
       image: "classes/wizard.jpg"
     }])
 
-  Skill.create([{name: "Climb", key_ability: "str", fighter_proficiency: 1, monk_proficiency: 1, wizard_proficiency: 2}])
-  Skill.create([{name: "Concentration", key_ability: "const", fighter_proficiency: 2, monk_proficiency: 1, wizard_proficiency: 1}])
-  Skill.create([{name: "Heal", key_ability: "wis", fighter_proficiency: 2, monk_proficiency: 2, wizard_proficiency: 2}])
-  Skill.create([{name: "Intimidate", key_ability: "cha", fighter_proficiency: 1, monk_proficiency: 2, wizard_proficiency: 2}])
-  Skill.create([{name: "Move Silently", key_ability: "dex", fighter_proficiency: 2, monk_proficiency: 1, wizard_proficiency: 2}])
-  Skill.create([{name: "Spellcraft", key_ability: "int", fighter_proficiency: 2, monk_proficiency: 2, wizard_proficiency: 1}])
+  Skill.create([{name: "Climb", key_ability: "str", barbarian_proficiency: 1, bard_proficiency: 1, cleric_proficiency: 2, druid_proficiency: 2, fighter_proficiency: 1, monk_proficiency: 1, paladin_proficiency: 2, ranger_proficiency: 1, rogue_proficiency: 1, sorcerer_proficiency: 2, wizard_proficiency: 2}])
+  Skill.create([{name: "Concentration", key_ability: "const", barbarian_proficiency: 2, bard_proficiency: 1, cleric_proficiency: 1, druid_proficiency: 1, fighter_proficiency: 2, monk_proficiency: 1, paladin_proficiency: 1, ranger_proficiency: 1, rogue_proficiency: 2, sorcerer_proficiency: 1, wizard_proficiency: 1}])
+  Skill.create([{name: "Heal", key_ability: "wis", barbarian_proficiency: 2, bard_proficiency: 2, cleric_proficiency: 1, druid_proficiency: 1, fighter_proficiency: 2, monk_proficiency: 2, paladin_proficiency: 1, ranger_proficiency: 1, rogue_proficiency: 2, sorcerer_proficiency: 2, wizard_proficiency: 2}])
+  Skill.create([{name: "Intimidate", key_ability: "cha", barbarian_proficiency: 1, bard_proficiency: 2, cleric_proficiency: 2, druid_proficiency: 2, fighter_proficiency: 1, monk_proficiency: 2, paladin_proficiency: 2, ranger_proficiency: 2, rogue_proficiency: 1, sorcerer_proficiency: 2, wizard_proficiency: 2}])
+  Skill.create([{name: "Move Silently", key_ability: "dex", barbarian_proficiency: 2, bard_proficiency: 1, cleric_proficiency: 2, druid_proficiency: 2, fighter_proficiency: 2, monk_proficiency: 1, paladin_proficiency: 2, ranger_proficiency: 1, rogue_proficiency: 1, sorcerer_proficiency: 2, wizard_proficiency: 2}])
+  Skill.create([{name: "Spellcraft", key_ability: "int", barbarian_proficiency: 2, bard_proficiency: 1, cleric_proficiency: 1, druid_proficiency: 1, fighter_proficiency: 2, monk_proficiency: 2, paladin_proficiency: 2, ranger_proficiency: 2, rogue_proficiency: 2, sorcerer_proficiency: 1, wizard_proficiency: 1}])

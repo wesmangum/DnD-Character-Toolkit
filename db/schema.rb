@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924182920) do
+ActiveRecord::Schema.define(version: 20140925202624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 20140924182920) do
     t.integer "fighter_proficiency"
     t.integer "wizard_proficiency"
     t.integer "monk_proficiency"
+    t.integer "barbarian_proficiency"
+    t.integer "bard_proficiency"
+    t.integer "cleric_proficiency"
+    t.integer "druid_proficiency"
+    t.integer "paladin_proficiency"
+    t.integer "ranger_proficiency"
+    t.integer "rogue_proficiency"
+    t.integer "sorcerer_proficiency"
   end
 
   create_table "users", force: true do |t|
