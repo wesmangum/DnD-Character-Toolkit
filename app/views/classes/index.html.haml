@@ -1,12 +1,17 @@
 .row
-  %h2 Classes
-  %p Great! Now, select your class.
+  .small-12.columns
+    %h2 Classes
+    .divider.small-12.columns
+  .small-12.columns
+    %p Great! Now, select your class.
 
 .row
-  = simple_form_for @character, url: character_classes_path, method: 'post', :html => {:class => "classes"} do |f|
-    = f.input :id, :as => :hidden, :input_html => { :value => @character.id }
-    = f.input :class, collection: @classes
-    = f.button :submit, "Submit Class"
+  .small-12.columns
+    = simple_form_for @character, url: character_classes_path, method: 'post', :html => {:class => "classes"} do |f|
+      = f.input :id, :as => :hidden, :input_html => { :value => @character.id }
+      = f.input :class, collection: @classes
+      = f.button :submit, "Submit Class", class: 'right'
 
 .row
-  .description
+  .small-12.columns
+    .description

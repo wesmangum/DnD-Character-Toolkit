@@ -30,7 +30,7 @@ feature "User fleshes out description for character", :js => true do
   scenario "Happy Path, all fields filled out" do
     current_path.should == character_description_index_path(Character.first)
 
-    expect(page).to have_content("Great job distributing those skill points! Now that we're done with numbers, it's time to flesh out your Character.")
+    expect(page).to have_content("Great job distributing those skill points! Now that you are done with numbers, it's time to flesh out your Character.")
     expect(page).to have_content("The only fields that are required are Name, Sex, Weight, Height, and Alignment. Everything else is up to you.")
 
     fill_in "Name", with: "Gimley"
@@ -57,7 +57,7 @@ feature "User fleshes out description for character", :js => true do
   scenario "Happy Path, all required fields filled out" do
     current_path.should == character_description_index_path(Character.first)
 
-    expect(page).to have_content("Great job distributing those skill points! Now that we're done with numbers, it's time to flesh out your Character.")
+    expect(page).to have_content("Great job distributing those skill points! Now that you are done with numbers, it's time to flesh out your Character.")
     expect(page).to have_content("The only fields that are required are Name, Sex, Weight, Height, and Alignment. Everything else is up to you.")
 
     fill_in "Name", with: "Gimley"
@@ -81,7 +81,7 @@ feature "User fleshes out description for character", :js => true do
   scenario "Sad Path, required fields not filled out" do
       current_path.should == character_description_index_path(Character.first)
 
-      expect(page).to have_content("Great job distributing those skill points! Now that we're done with numbers, it's time to flesh out your Character.")
+      expect(page).to have_content("Great job distributing those skill points! Now that you are done with numbers, it's time to flesh out your Character.")
       expect(page).to have_content("The only fields that are required are Name, Sex, Weight, Height, and Alignment. Everything else is up to you.")
 
       click_on "Submit Description"

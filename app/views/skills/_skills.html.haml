@@ -5,4 +5,4 @@
   =simple_form_for @character, url: character_skills_path(@character), method: 'post', :html => {:class => "skills"} do |f|
     - skills.each do |s|
       =f.input s.name.downcase.tr(" ", "_").to_sym, label: "#{s.name} (#{character.get_modifiers(s.key_ability)}):", collection: @character.check_proficiency(s), label_html: { class: (character.check_proficiency(s)[0] == 1 ? 'class-skill' : 'cross-class-skill') }, wrapper_html: { class: 'large-2 small-12 columns' }
-    =f.button :submit, "Submit Skills"
+    =f.button :submit, "Submit Skills", class: 'right'

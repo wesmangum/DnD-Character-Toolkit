@@ -1,10 +1,12 @@
 .small-12.columns
+    .divider
     %h3 Scores:
 - @abilities.each do |ability|
     .score.small-2.columns
         %p= ability
 
 .large-12.columns
+    .divider
     %h3 Abilities:
     =simple_form_for @character, url: character_abilities_path(@character), method: 'post', :html => {:class => "abilities"} do |f|
         =f.input :str, label: "Strength", collection: @abilities, wrapper_html: { class: 'large-2 small-12 columns' }
@@ -13,4 +15,4 @@
         =f.input :int, label: "Intelligence", collection: @abilities, wrapper_html: { class: 'large-2 small-12 columns' }
         =f.input :wis, label: "Wisdom", collection: @abilities, wrapper_html: { class: 'large-2 small-12 columns' }
         =f.input :cha, label: "Charisma", collection: @abilities, wrapper_html: { class: 'large-2 small-12 columns' }
-        =f.button :submit, "Submit Abilities"
+        =f.button :submit, "Submit Abilities", class: 'right'

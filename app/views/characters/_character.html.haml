@@ -1,46 +1,21 @@
 .row
   - unless character.name.nil?
+    .character-stat.small-12.columns
+      %h2= character.name
     .character-stat.small-6.columns
-      %p= "Name: #{character.name}"
-    .character-stat.small-6.columns
-      %p= "Sex: #{character.sex}"
+      %span= "Sex: #{character.sex}"
   .character-stat.small-6.columns
-    %p= "Race: #{character.race.name}"
+    %span= "Race: #{character.race.name}"
   .character-stat.small-6.columns
-    %p= "Class: #{character.dd_class.name}"
+    %span= "Class: #{character.dd_class.name}"
 
   -unless character.alignment.nil?
     .character-stat.small-6.columns
-      %p= "Alignment: #{character.alignment}"
+      %span= "Alignment: #{character.alignment}"
     .character-stat.small-6.columns
-      %p= "Height: #{character.height} in."
+      %span= "Height: #{character.height} in."
     .character-stat.small-6.columns
-      %p= "Weight: #{character.weight} lbs."
-
-  -unless character.background.nil?
-    .small-12.large-6.columns
-      %table
-        %tbody
-        %tr
-          %td Background
-          %td= character.background
-
-  -unless character.personality.nil?
-    .small-12.large-6.columns
-      %table
-        %tbody
-        %tr
-          %td Personality
-          %td= character.personality
-
-  -unless character.appearance.nil?
-    .small-12.large-6.columns
-      %table
-        %tbody
-        %tr
-          %td Appearance
-          %td= character.appearance
-
+      %span= "Weight: #{character.weight} lbs."
 .row
   - unless character.str.nil?
     .small-12.large-6.columns
@@ -48,6 +23,7 @@
         %thead
           %tr
             %th Abilities
+            %th
         %tbody
           %tr
             %td Strength
@@ -74,8 +50,36 @@
         %thead
           %tr
             %th Skills
+            %th
         %tbody
           - skills.each do |s|
             %tr
               %td= s.name
               %td= character[(s.name.downcase.tr(" ", "_").to_sym)]
+.row
+  -unless character.background == "" || character.background.nil?
+    .small-12.large-6.columns
+      %table
+        %thead
+          %th Background
+        %tbody
+        %tr
+          %td= character.background
+
+  -unless character.personality == "" || character.personality.nil?
+    .small-12.large-6.columns
+      %table
+        %thead
+          %th Personality
+        %tbody
+          %tr
+            %td= character.personality
+
+  -unless character.appearance == "" || character.background.nil?
+    .small-12.large-6.columns
+      %table
+        %thead
+          %th Appearance
+        %tbody
+          %tr
+            %td= character.appearance

@@ -1,11 +1,12 @@
 .row
   .small-12.columns
     %h2 Abilities
+    .divider.small-12.columns
+  .small-12.columns
     %p Now, it's time to generate and assign Ability Scores. Click the 'Generate' button below to roll 6 numbers. Then, select the number from the ability dropdown you wish to assign them to.
 
 .row
   .small-12.columns
-    %h3 Character:
     =render partial: 'characters/character', locals: {skills: @skills, character: @character}
     =link_to "Generate", character_generate_ability_scores_path(@character),remote: true, :class => "button"
 .row

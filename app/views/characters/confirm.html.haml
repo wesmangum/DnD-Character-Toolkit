@@ -1,7 +1,11 @@
 .row
-  %h2 Confirm Character
-  %p Review your character to make sure everything looks good.
+  .small-12.columns
+    %h2 Confirm Character
+    .divider
+  .small-12.columns
+    %p Review your character to make sure everything looks good.
 .row
-  =render partial: 'characters/character', locals: {skills: @skills, character: @character}
+  .small-12.columns
+    =render partial: 'characters/character', locals: {skills: @skills, character: @character}
 
 =link_to "Confirm Character", character_confirm_path(@character), method: :post, class: "button right"

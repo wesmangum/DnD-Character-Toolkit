@@ -87,7 +87,7 @@ $include-html-global-classes: $include-html-classes;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font weights
-// $font-weight-normal: normal !default;
+$font-weight-normal: normal !default;
 // $font-weight-bold: bold !default;
 
 // Global
@@ -99,7 +99,7 @@ $include-html-global-classes: $include-html-classes;
 // We use these to control various global styles
 // $body-bg: $white;
 // $body-font-color: $jet;
-$body-font-family: 'Open Sans', sans-serif;
+$body-font-family: 'Merriweather', serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
@@ -196,7 +196,7 @@ $body-font-family: 'Open Sans', sans-serif;
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-$header-font-family: 'Merriweather', serif;
+$header-font-family: 'Open Sans', sans-serif;
 // $header-font-weight: $font-weight-normal;
 // $header-font-style: normal;
 // $header-font-color: $jet;
@@ -1268,23 +1268,23 @@ $header-font-family: 'Merriweather', serif;
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-// $table-bg: $white;
-// $table-even-row-bg: $snow  ;
+$table-bg: transparent;
+$table-even-row-bg: transparent;
 
 // These control the table cell border style
-// $table-border-style: solid;
+$table-border-style: none;
 // $table-border-size: 1px;
-// $table-border-color: $gainsboro;
+$table-border-color: rgb(157, 10, 4);
 
 // These control the table head styles
-// $table-head-bg: $white-smoke  ;
-// $table-head-font-size: rem-calc(14);
-// $table-head-font-color: $jet;
-// $table-head-font-weight: $font-weight-bold;
+$table-head-bg: none;
+$table-head-font-size: rem-calc(16);
+// $table-head-font-color: $white;
+$table-head-font-weight: $font-weight-normal;
 // $table-head-padding: rem-calc(8 10 10);
 
 // These control the row padding and font styles
-// $table-row-padding: rem-calc(9 10);
+$table-row-padding: rem-calc(9 10);
 // $table-row-font-size: rem-calc(14);
 // $table-row-font-color: $jet;
 // $table-line-height: rem-calc(18);

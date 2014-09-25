@@ -16,16 +16,52 @@ nav.top-bar{
   }
 }
 
+.skills {
+  label {
+    font-size: 0.8em !important;
+  }
+}
+
 h1 {
   padding-bottom: 1em;
-  width: 100%;
-  text-align: center;
+}
+
+h1, h2, h3 {
+  display: inline-block;
+  background: black;
+  color: white;
+  padding: 0.01em 0.5em;
+}
+
+#logo {
+  display: block;
+  background: transparent;
+  padding: 0;
+}
+
+.info-block {
+  h3 {
+  }
+}
+
+table {
+  border-collapse: collapse;
+  td, th {
+    border-bottom: 1px solid rgb(157, 10, 4) !important;
+  }
+  th {
+    font-weight: bold !important;
+    font-size: 1.2em !important;
+  }
+}
+
+.divider {
+  border: 1px solid rgb(157, 10, 4);
+  margin-bottom: 1em;
 }
 
 .character-stat, .score {
-  p {
-    font-weight: bold;
-  }
+  margin-bottom: 1em;
 }
 
 .session-links {

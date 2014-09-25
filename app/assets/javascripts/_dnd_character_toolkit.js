@@ -15,7 +15,7 @@
         dataType: 'html',
         success:(function(html) {
                   $(".description").fadeOut(400, function() {
-                    $(".description").empty().append(html).hide().fadeIn(400);
+                    $(".description").empty().append("<div class='divider'></div>").append(html).hide().fadeIn(400);
                   });
                 })
       });
@@ -33,7 +33,7 @@
         dataType: 'html',
         success:(function(html) {
                   $(".description").fadeOut(400, function() {
-                    $(".description").empty().append(html).hide().fadeIn(400);
+                    $(".description").empty().append("<div class='divider'></div>").append(html).hide().fadeIn(400);
                   });
                 })
       });

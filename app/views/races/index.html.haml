@@ -1,12 +1,17 @@
 .row
-  %h2 Races
-  %p You're on the first step to creating your character! The first step is to decide on a race. Select one from the dropdown below.
+  .small-12.columns
+    %h2 Races
+    .divider
+  .small-12.columns
+    %p You're on the first step to creating your character! The first step is to decide on a race. Select one from the dropdown below.
 
 .row
-  = simple_form_for @character, url: character_races_path, method: 'post', :html => {:class => "races"} do |f|
-    = f.input :id, :as => :hidden, :input_html => { :value => @character.id }
-    = f.input :race, collection: @races
-    = f.button :submit, "Submit Race"
+  .small-12.columns
+    = simple_form_for @character, url: character_races_path, method: 'post', :html => {:class => "races"} do |f|
+      = f.input :id, :as => :hidden, :input_html => { :value => @character.id }
+      = f.input :race, collection: @races
+      = f.button :submit, "Submit Race", class: 'right'
 
 .row
-  .description
+  .small-12.columns
+    .description
