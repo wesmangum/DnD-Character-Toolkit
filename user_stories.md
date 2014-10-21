@@ -216,3 +216,20 @@ I want to save my Character to my account
 * They are taken to a confirmation screen for their Character, where they can review and make changes accordingly
 * When Ready, they may click "Confirm Character" to save their character to the DB
 * They are then redirected to the Dashboard, where thier character will be listed
+
+##User Contacts Admin
+
+As a user
+In order to report bugs or suggest features
+I want to contact the creator of this application
+
+###Acceptance Criteria
+* The User should be able to visit a Contact page
+* The User should be presented with fields to fill out email, title, and body for message
+* The "Send" button should submit the form and send a copy of the email to both the creator and the User
+
+###Usage
+* From the any screen, the User clicks the "Contact" button in the bashboard
+* They are taken to a page with a form containing the fields "Email", "Subject", and "Body"
+* They fill out the form with their inquiry and click the "Send" button
+* They are then redirected to the Dashboard, where they will receive a confirmation notification that their message was sent
