@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  match "/contacts", to: "contacts#new", via: "get"
+  resources :contacts, only: [:new, :create]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
   resources :users, only: :show
