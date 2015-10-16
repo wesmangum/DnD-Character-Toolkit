@@ -10,7 +10,8 @@ class ContactsController < ApplicationController
 			flash.notice = "Your message was delivered successfully!"
 			redirect_to root_path
 		else
-			flash.notice = "Cannot send message."
+			puts flash.notice
+			flash.alert = "Cannot send message."
 			redirect_to contacts_path(@character)
 		end
 	end
