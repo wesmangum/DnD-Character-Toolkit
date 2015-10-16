@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :fetch_character
-  skip_before_filter :fetch_character, if: :devise_controller?
+  skip_before_filter :fetch_character, except: [:devise_controller?, :contacts_controller?, :home_controller?]
   before_filter :check_for_user
-  skip_before_filter :check_for_user, if: :devise_controller?
+  skip_before_filter :check_for_user, except: [:devise_controller?, :contacts_controller?, :home_controller?]
   before_filter :finalized
-  skip_before_filter :finalized, if: :devise_controller?
+  skip_before_filter :finalized, except: [:devise_controller?, :contacts_controller?, :home_controller?]
 
   attr_accessor :character
 
