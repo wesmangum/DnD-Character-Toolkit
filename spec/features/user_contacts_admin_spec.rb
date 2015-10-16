@@ -6,8 +6,8 @@
 
 # ###Acceptance Criteria
 # * The User should be able to visit a Contact page
-# * The User should be presented with fields to fill out email, title, and body for message
-# * The "Send" button should submit the form and send a copy of the email to both the creator and the User
+# * The User should be presented with fields to fill out email, name, and message
+# * The "Send" button should submit the form and send a copy of the email to both the admin
 
 # ###Usage
 # * From the any screen, the User clicks the "Contact" button in the bashboard
